@@ -43,13 +43,13 @@ import (
 
 func main() {
 	var db *sqlite.Sqlite3
-	if sqlite.Open(c.AllocaCStr(":memory:"), &db) != sqlite.OK {
+	if sqlite.Open(c.Str(":memory:"), &db) != sqlite.OK {
 		panic("could not open database")
 	}
 	defer db.Close()
 
 	var stmt *sqlite.Stmt
-	if db.PrepareV2(c.AllocaCStr("SELECT ?1 + 1"), -1, &stmt, nil) != sqlite.OK {
+	if db.PrepareV2(c.Str("SELECT ?1 + 1"), -1, &stmt, nil) != sqlite.OK {
 		panic(c.GoString(db.Errmsg()))
 	}
 	defer stmt.Finalize()
