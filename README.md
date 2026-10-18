@@ -1,6 +1,7 @@
 # SQLite
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/llarhub/sqlite.svg)](https://pkg.go.dev/github.com/llarhub/sqlite)
+[![GitHub release](https://img.shields.io/github/v/tag/llarhub/sqlite.svg?label=release)](https://github.com/llarhub/sqlite/releases)
 [![LLGo](https://img.shields.io/badge/powered_by-LLGo-green.svg)](https://github.com/xgo-dev/llgo)
 [![XGo](https://img.shields.io/badge/project-XGo-blue.svg)](https://github.com/goplus/xgo)
 
