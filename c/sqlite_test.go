@@ -5,7 +5,7 @@ import (
 	"unsafe"
 
 	"github.com/goplus/lib/c"
-	sqlite "github.com/llarhub/sqlite"
+	"github.com/llarhub/sqlite"
 )
 
 func TestInMemoryQuery(t *testing.T) {
