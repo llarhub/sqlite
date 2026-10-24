@@ -2936,7 +2936,7 @@ type File struct {
 	PMethods *IoMethods
 }
 
-// llgo:type C
+//llgo:cdecl
 type IoMethods struct {
 	IVersion               c.Int
 	XClose                 func(_llcppg_param1 *File) c.Int
@@ -2959,7 +2959,7 @@ type IoMethods struct {
 	XUnfetch               func(_llcppg_param1 *File, _llcppg_param2 Int64, _llcppg_param3 unsafe.Pointer) c.Int
 }
 
-// llgo:type C
+//llgo:cdecl
 type Vfs struct {
 	IVersion          c.Int
 	SzOsFile          c.Int
@@ -2985,7 +2985,7 @@ type Vfs struct {
 	XNextSystemCall   func(_llcppg_param1 *Vfs, _llcppg_param2 *c.Char) *c.Char
 }
 
-// llgo:type C
+//llgo:cdecl
 type MemMethods struct {
 	XMalloc   func(_llcppg_param1 c.Int) unsafe.Pointer
 	XFree     func(_llcppg_param1 unsafe.Pointer)
@@ -3012,7 +3012,7 @@ type MemMethods struct {
 // * of this structure must not change while it is registered with
 // * any database connection.
 //
-// llgo:type C
+//llgo:cdecl
 type Module struct {
 	IVersion      c.Int
 	XCreate       func(_llcppg_param1 *Sqlite3, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int, _llcppg_param4 **c.Char, _llcppg_param5 **Vtab, _llcppg_param6 **c.Char) c.Int
@@ -3200,7 +3200,7 @@ type VtabCursor struct {
 	PVtab *Vtab
 }
 
-// llgo:type C
+//llgo:cdecl
 type MutexMethods struct {
 	XMutexInit    func() c.Int
 	XMutexEnd     func() c.Int
@@ -3217,7 +3217,7 @@ type PcachePage struct {
 	PExtra unsafe.Pointer
 }
 
-// llgo:type C
+//llgo:cdecl
 type PcacheMethods2 struct {
 	IVersion   c.Int
 	PArg       unsafe.Pointer
@@ -3234,7 +3234,7 @@ type PcacheMethods2 struct {
 	XShrink    func(_llcppg_param1 *Pcache)
 }
 
-// llgo:type C
+//llgo:cdecl
 type PcacheMethods struct {
 	PArg       unsafe.Pointer
 	XInit      func(_llcppg_param1 unsafe.Pointer) c.Int
@@ -3274,7 +3274,7 @@ type Snapshot struct {
 // * A pointer to a structure of the following type is passed as the first
 // * argument to callbacks registered using rtree_geometry_callback().
 //
-// llgo:type C
+//llgo:cdecl
 type RtreeGeometry struct {
 	PContext unsafe.Pointer
 	NParam   c.Int
@@ -3291,7 +3291,7 @@ type RtreeGeometry struct {
 // * sqlite3_rtree_geometry.  This structure is a subclass of
 // * sqlite3_rtree_geometry.
 //
-// llgo:type C
+//llgo:cdecl
 type RtreeQueryInfo struct {
 	PContext      unsafe.Pointer
 	NParam        c.Int
@@ -3610,7 +3610,7 @@ type Fts5PhraseIter struct {
 // *   API is the same as the xTokenize() API, except that it allows a tokenizer
 // *   locale to be specified.
 //
-// llgo:type C
+//llgo:cdecl
 type Fts5ExtensionApi struct {
 	IVersion           c.Int
 	XUserData          func(_llcppg_param1 *Fts5Context) unsafe.Pointer
@@ -3638,7 +3638,7 @@ type Fts5ExtensionApi struct {
 	XTokenizeV2        func(_llcppg_param1 *Fts5Context, _llcppg_param2 *c.Char, _llcppg_param3 c.Int, _llcppg_param4 *c.Char, _llcppg_param5 c.Int, _llcppg_param6 unsafe.Pointer, _llcppg_param7 func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 c.Int, _llcppg_param5 c.Int, _llcppg_param6 c.Int) c.Int) c.Int
 }
 
-// llgo:type C
+//llgo:cdecl
 type Fts5TokenizerV2 struct {
 	IVersion  c.Int
 	XCreate   func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 **c.Char, _llcppg_param3 c.Int, _llcppg_param4 **Fts5Tokenizer) c.Int
@@ -3646,14 +3646,14 @@ type Fts5TokenizerV2 struct {
 	XTokenize func(_llcppg_param1 *Fts5Tokenizer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int, _llcppg_param4 *c.Char, _llcppg_param5 c.Int, _llcppg_param6 *c.Char, _llcppg_param7 c.Int, _llcppg_param8 func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 c.Int, _llcppg_param5 c.Int, _llcppg_param6 c.Int) c.Int) c.Int
 }
 
-// llgo:type C
+//llgo:cdecl
 type Fts5TokenizerLegacy struct {
 	XCreate   func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 **c.Char, _llcppg_param3 c.Int, _llcppg_param4 **Fts5Tokenizer) c.Int
 	XDelete   func(_llcppg_param1 *Fts5Tokenizer)
 	XTokenize func(_llcppg_param1 *Fts5Tokenizer, _llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int, _llcppg_param4 *c.Char, _llcppg_param5 c.Int, _llcppg_param6 func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 c.Int, _llcppg_param5 c.Int, _llcppg_param6 c.Int) c.Int) c.Int
 }
 
-// llgo:type C
+//llgo:cdecl
 type Fts5Api struct {
 	IVersion           c.Int
 	XCreateTokenizer   func(_llcppg_param1 *Fts5Api, _llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *Fts5TokenizerLegacy, _llcppg_param5 func(_llcppg_param1 unsafe.Pointer)) c.Int
@@ -3695,7 +3695,7 @@ type Uint64 = SqliteUint64
 // * This is legacy and deprecated.  It is included for historical
 // * compatibility and is not documented.
 //
-// llgo:type C
+//llgo:cdecl
 type Callback = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 **c.Char, _llcppg_param4 **c.Char) c.Int
 
 // * CAPI3REF: File Name
@@ -3716,7 +3716,7 @@ type Callback = func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcpp
 // * </ul>
 type Filename = *c.Char
 
-// llgo:type C
+//llgo:cdecl
 type SyscallPtr = func()
 
 // * CAPI3REF: Constants Defining Special Destructor Behavior
@@ -3732,7 +3732,7 @@ type SyscallPtr = func()
 // * The typedef is necessary to work around problems in certain
 // * C++ compilers.
 //
-// llgo:type C
+//llgo:cdecl
 type DestructorType = func(_llcppg_param1 unsafe.Pointer)
 type IndexConstraint struct {
 	IColumn     c.Int
@@ -3752,7 +3752,7 @@ type IndexConstraintUsage struct {
 }
 type RtreeDbl = c.Double
 
-// llgo:type C
+//llgo:cdecl
 type Fts5ExtensionFunction = func(_llcppg_param1 *Fts5ExtensionApi, _llcppg_param2 *Fts5Context, _llcppg_param3 *Context, _llcppg_param4 c.Int, _llcppg_param5 **Value)
 
 // * CAPI3REF: Run-Time Library Version Numbers
