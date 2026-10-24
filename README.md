@@ -3,6 +3,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/llarhub/sqlite.svg)](https://pkg.go.dev/github.com/llarhub/sqlite)
 [![GitHub release](https://img.shields.io/github/v/tag/llarhub/sqlite.svg?label=release)](https://github.com/llarhub/sqlite/releases)
 [![LLGo](https://img.shields.io/badge/powered_by-LLGo-green.svg)](https://github.com/xgo-dev/llgo)
+[![LLGo bindings](https://img.shields.io/badge/llarhub-LLGo_Bindings-brightgreen.svg)](https://github.com/xgo-dev/llgo/blob/main/doc/LLGo-Bindings.md)
 [![XGo](https://img.shields.io/badge/project-XGo-blue.svg)](https://github.com/goplus/xgo)
 
 LLGo bindings for SQLite, generated from the SQLite3 C API. The package exposes database connections, prepared statements, transactions, values, result callbacks, and application-defined SQL functions for XGo and Go programs compiled with LLGo.
