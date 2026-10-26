@@ -40,14 +40,11 @@ package main
 
 import (
 	"github.com/goplus/lib/c"
-	"github.com/goplus/lib/c/os"
 	"github.com/llarhub/sqlite"
 )
 
 func main() {
-	os.Remove(c.Str("test.db"))
-
-	db, err := sqlite.Open(c.Str("test.db"))
+	db, err := sqlite.Open(c.Str(":memory:"))
 	check(err, db, "sqlite: Open")
 	defer db.Close()
 
