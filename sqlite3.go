@@ -50,10 +50,9 @@ const (
 // * New error codes may be added in future versions of SQLite.
 //
 // * See also: [extended result code definitions]
-const OK = 0
-
-// beginning-of-error-codes
 const (
+	OK = 0
+	// beginning-of-error-codes
 	ERROR = 1
 	// Internal logic error in SQLite
 	INTERNAL = 2
@@ -3900,12 +3899,12 @@ func Threadsafe() c.Int
 // * ^Calling sqlite3_close() or sqlite3_close_v2() with a NULL pointer
 // * argument is a harmless no-op.
 //
-// llgo:link (*Sqlite3).Close C.sqlite3_close
+//llgo:link (*Sqlite3).Close C.sqlite3_close
 func (self *Sqlite3) Close() c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).CloseV2 C.sqlite3_close_v2
+//llgo:link (*Sqlite3).CloseV2 C.sqlite3_close_v2
 func (self *Sqlite3) CloseV2() c.Int {
 	return 0
 }
@@ -3973,7 +3972,7 @@ func (self *Sqlite3) CloseV2() c.Int {
 // *       passed as the 3rd and 4th callback parameters after it returns.
 // * </ul>
 //
-// llgo:link (*Sqlite3).Exec C.sqlite3_exec
+//llgo:link (*Sqlite3).Exec C.sqlite3_exec
 func (self *Sqlite3) Exec(sql *c.Char, callback func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 **c.Char, _llcppg_param4 **c.Char) c.Int, _llcppg_param4 unsafe.Pointer, errmsg **c.Char) c.Int {
 	return 0
 }
@@ -4116,7 +4115,7 @@ func Config(_llcppg_param1 c.Int, __llgo_va_list ...any) c.Int
 // * ^Calls to sqlite3_db_config() return SQLITE_OK if and only if
 // * the call is considered successful.
 //
-// llgo:link (*Sqlite3).DbConfig C.sqlite3_db_config
+//llgo:link (*Sqlite3).DbConfig C.sqlite3_db_config
 func (self *Sqlite3) DbConfig(op c.Int, __llgo_va_list ...any) c.Int {
 	return 0
 }
@@ -4128,7 +4127,7 @@ func (self *Sqlite3) DbConfig(op c.Int, __llgo_va_list ...any) c.Int {
 // * [extended result codes] feature of SQLite. ^The extended result
 // * codes are disabled by default for historical compatibility.
 //
-// llgo:link (*Sqlite3).ExtendedResultCodes C.sqlite3_extended_result_codes
+//llgo:link (*Sqlite3).ExtendedResultCodes C.sqlite3_extended_result_codes
 func (self *Sqlite3) ExtendedResultCodes(onoff c.Int) c.Int {
 	return 0
 }
@@ -4192,7 +4191,7 @@ func (self *Sqlite3) ExtendedResultCodes(onoff c.Int) c.Int {
 // * unpredictable and might not equal either the old or the new
 // * last insert [rowid].
 //
-// llgo:link (*Sqlite3).LastInsertRowid C.sqlite3_last_insert_rowid
+//llgo:link (*Sqlite3).LastInsertRowid C.sqlite3_last_insert_rowid
 func (self *Sqlite3) LastInsertRowid() Int64 {
 	return 0
 }
@@ -4204,7 +4203,7 @@ func (self *Sqlite3) LastInsertRowid() Int64 {
 // * set the value returned by calling sqlite3_last_insert_rowid(D) to R
 // * without inserting a row into the database.
 //
-// llgo:link (*Sqlite3).SetLastInsertRowid C.sqlite3_set_last_insert_rowid
+//llgo:link (*Sqlite3).SetLastInsertRowid C.sqlite3_set_last_insert_rowid
 func (self *Sqlite3) SetLastInsertRowid(_llcppg_param2 Int64) {
 }
 
@@ -4270,12 +4269,12 @@ func (self *Sqlite3) SetLastInsertRowid(_llcppg_param2 Int64) {
 // * <li> the [data_version pragma]
 // * </ul>
 //
-// llgo:link (*Sqlite3).Changes C.sqlite3_changes
+//llgo:link (*Sqlite3).Changes C.sqlite3_changes
 func (self *Sqlite3) Changes() c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).Changes64 C.sqlite3_changes64
+//llgo:link (*Sqlite3).Changes64 C.sqlite3_changes64
 func (self *Sqlite3) Changes64() Int64 {
 	return 0
 }
@@ -4318,12 +4317,12 @@ func (self *Sqlite3) Changes64() Int64 {
 // * <li> the [SQLITE_FCNTL_DATA_VERSION] [file control]
 // * </ul>
 //
-// llgo:link (*Sqlite3).TotalChanges C.sqlite3_total_changes
+//llgo:link (*Sqlite3).TotalChanges C.sqlite3_total_changes
 func (self *Sqlite3) TotalChanges() c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).TotalChanges64 C.sqlite3_total_changes64
+//llgo:link (*Sqlite3).TotalChanges64 C.sqlite3_total_changes64
 func (self *Sqlite3) TotalChanges64() Int64 {
 	return 0
 }
@@ -4366,11 +4365,11 @@ func (self *Sqlite3) TotalChanges64() Int64 {
 // * or not an interrupt is currently in effect for [database connection] D.
 // * It returns 1 if an interrupt is currently in effect, or 0 otherwise.
 //
-// llgo:link (*Sqlite3).Interrupt C.sqlite3_interrupt
+//llgo:link (*Sqlite3).Interrupt C.sqlite3_interrupt
 func (self *Sqlite3) Interrupt() {
 }
 
-// llgo:link (*Sqlite3).IsInterrupted C.sqlite3_is_interrupted
+//llgo:link (*Sqlite3).IsInterrupted C.sqlite3_is_interrupted
 func (self *Sqlite3) IsInterrupted() c.Int {
 	return 0
 }
@@ -4471,7 +4470,7 @@ func Complete16(sql unsafe.Pointer) c.Int
 // * A busy handler must not close the database connection
 // * or [prepared statement] that invoked the busy handler.
 //
-// llgo:link (*Sqlite3).BusyHandler C.sqlite3_busy_handler
+//llgo:link (*Sqlite3).BusyHandler C.sqlite3_busy_handler
 func (self *Sqlite3) BusyHandler(_llcppg_param2 func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int) c.Int, _llcppg_param3 unsafe.Pointer) c.Int {
 	return 0
 }
@@ -4496,7 +4495,7 @@ func (self *Sqlite3) BusyHandler(_llcppg_param2 func(_llcppg_param1 unsafe.Point
 //
 // * See also:  [PRAGMA busy_timeout]
 //
-// llgo:link (*Sqlite3).BusyTimeout C.sqlite3_busy_timeout
+//llgo:link (*Sqlite3).BusyTimeout C.sqlite3_busy_timeout
 func (self *Sqlite3) BusyTimeout(ms c.Int) c.Int {
 	return 0
 }
@@ -4531,7 +4530,7 @@ func (self *Sqlite3) BusyTimeout(ms c.Int) c.Int {
 // * passed to this API, the new connection blocks until the exclusive lock
 // * has been released.
 //
-// llgo:link (*Sqlite3).SetlkTimeout C.sqlite3_setlk_timeout
+//llgo:link (*Sqlite3).SetlkTimeout C.sqlite3_setlk_timeout
 func (self *Sqlite3) SetlkTimeout(ms c.Int, flags c.Int) c.Int {
 	return 0
 }
@@ -4608,7 +4607,7 @@ func (self *Sqlite3) SetlkTimeout(ms c.Int, flags c.Int) c.Int {
 // * reflected in subsequent calls to [sqlite3_errcode()] or
 // * [sqlite3_errmsg()].
 //
-// llgo:link (*Sqlite3).Table C.sqlite3_get_table
+//llgo:link (*Sqlite3).Table C.sqlite3_get_table
 func (self *Sqlite3) Table(zSql *c.Char, pazResult ***c.Char, pnRow *c.Int, pnColumn *c.Int, pzErrmsg **c.Char) c.Int {
 	return 0
 }
@@ -4898,7 +4897,7 @@ func Randomness(N c.Int, P unsafe.Pointer)
 // * as stated in the previous paragraph, sqlite3_step() invokes
 // * sqlite3_prepare_v2() to reprepare a statement after a schema change.
 //
-// llgo:link (*Sqlite3).SetAuthorizer C.sqlite3_set_authorizer
+//llgo:link (*Sqlite3).SetAuthorizer C.sqlite3_set_authorizer
 func (self *Sqlite3) SetAuthorizer(xAuth func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 *c.Char, _llcppg_param5 *c.Char, _llcppg_param6 *c.Char) c.Int, pUserData unsafe.Pointer) c.Int {
 	return 0
 }
@@ -4934,12 +4933,12 @@ func (self *Sqlite3) SetAuthorizer(xAuth func(_llcppg_param1 unsafe.Pointer, _ll
 // * either [sqlite3_trace()] or [sqlite3_trace_v2()] will cancel the
 // * profile callback.
 //
-// llgo:link (*Sqlite3).Trace C.sqlite3_trace
+//llgo:link (*Sqlite3).Trace C.sqlite3_trace
 func (self *Sqlite3) Trace(xTrace func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char), _llcppg_param3 unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Sqlite3).Profile C.sqlite3_profile
+//llgo:link (*Sqlite3).Profile C.sqlite3_profile
 func (self *Sqlite3) Profile(xProfile func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 Uint64), _llcppg_param3 unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
@@ -4974,7 +4973,7 @@ func (self *Sqlite3) Profile(xProfile func(_llcppg_param1 unsafe.Pointer, _llcpp
 // * interfaces [sqlite3_trace()] and [sqlite3_profile()], both of which
 // * are deprecated.
 //
-// llgo:link (*Sqlite3).TraceV2 C.sqlite3_trace_v2
+//llgo:link (*Sqlite3).TraceV2 C.sqlite3_trace_v2
 func (self *Sqlite3) TraceV2(uMask c.Uint, xCallback func(_llcppg_param1 c.Uint, _llcppg_param2 unsafe.Pointer, _llcppg_param3 unsafe.Pointer, _llcppg_param4 unsafe.Pointer) c.Int, pCtx unsafe.Pointer) c.Int {
 	return 0
 }
@@ -5017,7 +5016,7 @@ func (self *Sqlite3) TraceV2(uMask c.Uint, xCallback func(_llcppg_param1 c.Uint,
 // * invoked directly from [sqlite3_prepare()] while analyzing and generating
 // * code for complex queries.
 //
-// llgo:link (*Sqlite3).ProgressHandler C.sqlite3_progress_handler
+//llgo:link (*Sqlite3).ProgressHandler C.sqlite3_progress_handler
 func (self *Sqlite3) ProgressHandler(_llcppg_param2 c.Int, _llcppg_param3 func(_llcppg_param1 unsafe.Pointer) c.Int, _llcppg_param4 unsafe.Pointer) {
 }
 
@@ -5298,14 +5297,14 @@ func (self *Sqlite3) ProgressHandler(_llcppg_param2 c.Int, _llcppg_param3 func(_
 //
 // * See also: [sqlite3_temp_directory]
 //
-//go:linkname Open C.sqlite3_open
-func Open(filename *c.Char, ppDb **Sqlite3) c.Int
+//go:linkname doOpen C.sqlite3_open
+func doOpen(filename *c.Char, ppDb **Sqlite3) c.Int
 
 //go:linkname Open16 C.sqlite3_open16
 func Open16(filename unsafe.Pointer, ppDb **Sqlite3) c.Int
 
-//go:linkname OpenV2 C.sqlite3_open_v2
-func OpenV2(filename *c.Char, ppDb **Sqlite3, flags c.Int, zVfs *c.Char) c.Int
+//go:linkname doOpenV2 C.sqlite3_open_v2
+func doOpenV2(filename *c.Char, ppDb **Sqlite3, flags c.Int, zVfs *c.Char) c.Int
 
 // * CAPI3REF: Obtain Values For URI Parameters
 //
@@ -5550,22 +5549,22 @@ func FreeFilename(_llcppg_param1 Filename)
 // * was invoked incorrectly by the application.  In that case, the
 // * error code and message may or may not be set.
 //
-// llgo:link (*Sqlite3).Errcode C.sqlite3_errcode
+//llgo:link (*Sqlite3).Errcode C.sqlite3_errcode
 func (self *Sqlite3) Errcode() c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).ExtendedErrcode C.sqlite3_extended_errcode
+//llgo:link (*Sqlite3).ExtendedErrcode C.sqlite3_extended_errcode
 func (self *Sqlite3) ExtendedErrcode() c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).Errmsg C.sqlite3_errmsg
+//llgo:link (*Sqlite3).Errmsg C.sqlite3_errmsg
 func (self *Sqlite3) Errmsg() *c.Char {
 	return nil
 }
 
-// llgo:link (*Sqlite3).Errmsg16 C.sqlite3_errmsg16
+//llgo:link (*Sqlite3).Errmsg16 C.sqlite3_errmsg16
 func (self *Sqlite3) Errmsg16() unsafe.Pointer {
 	return nil
 }
@@ -5573,7 +5572,7 @@ func (self *Sqlite3) Errmsg16() unsafe.Pointer {
 //go:linkname Errstr C.sqlite3_errstr
 func Errstr(_llcppg_param1 c.Int) *c.Char
 
-// llgo:link (*Sqlite3).ErrorOffset C.sqlite3_error_offset
+//llgo:link (*Sqlite3).ErrorOffset C.sqlite3_error_offset
 func (self *Sqlite3) ErrorOffset() c.Int {
 	return 0
 }
@@ -5617,7 +5616,7 @@ func (self *Sqlite3) ErrorOffset() c.Int {
 //
 // * New run-time limit categories may be added in future releases.
 //
-// llgo:link (*Sqlite3).Limit C.sqlite3_limit
+//llgo:link (*Sqlite3).Limit C.sqlite3_limit
 func (self *Sqlite3) Limit(id c.Int, newVal c.Int) c.Int {
 	return 0
 }
@@ -5725,32 +5724,32 @@ func (self *Sqlite3) Limit(id c.Int, newVal c.Int) c.Int {
 // * sqlite3_prepare_v2() interface works exactly the same as
 // * sqlite3_prepare_v3() with a zero prepFlags parameter.
 //
-// llgo:link (*Sqlite3).Prepare C.sqlite3_prepare
-func (self *Sqlite3) Prepare(zSql *c.Char, nByte c.Int, ppStmt **Stmt, pzTail **c.Char) c.Int {
+//llgo:link (*Sqlite3).doPrepare C.sqlite3_prepare
+func (self *Sqlite3) doPrepare(zSql *c.Char, nByte c.Int, ppStmt **Stmt, pzTail **c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).PrepareV2 C.sqlite3_prepare_v2
-func (self *Sqlite3) PrepareV2(zSql *c.Char, nByte c.Int, ppStmt **Stmt, pzTail **c.Char) c.Int {
+//llgo:link (*Sqlite3).doPrepareV2 C.sqlite3_prepare_v2
+func (self *Sqlite3) doPrepareV2(zSql *c.Char, nByte c.Int, ppStmt **Stmt, pzTail **c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).PrepareV3 C.sqlite3_prepare_v3
-func (self *Sqlite3) PrepareV3(zSql *c.Char, nByte c.Int, prepFlags c.Uint, ppStmt **Stmt, pzTail **c.Char) c.Int {
+//llgo:link (*Sqlite3).doPrepareV3 C.sqlite3_prepare_v3
+func (self *Sqlite3) doPrepareV3(zSql *c.Char, nByte c.Int, prepFlags c.Uint, ppStmt **Stmt, pzTail **c.Char) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).Prepare16 C.sqlite3_prepare16
+//llgo:link (*Sqlite3).Prepare16 C.sqlite3_prepare16
 func (self *Sqlite3) Prepare16(zSql unsafe.Pointer, nByte c.Int, ppStmt **Stmt, pzTail *unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).Prepare16V2 C.sqlite3_prepare16_v2
+//llgo:link (*Sqlite3).Prepare16V2 C.sqlite3_prepare16_v2
 func (self *Sqlite3) Prepare16V2(zSql unsafe.Pointer, nByte c.Int, ppStmt **Stmt, pzTail *unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).Prepare16V3 C.sqlite3_prepare16_v3
+//llgo:link (*Sqlite3).Prepare16V3 C.sqlite3_prepare16_v3
 func (self *Sqlite3) Prepare16V3(zSql unsafe.Pointer, nByte c.Int, prepFlags c.Uint, ppStmt **Stmt, pzTail *unsafe.Pointer) c.Int {
 	return 0
 }
@@ -5795,17 +5794,17 @@ func (self *Sqlite3) Prepare16V3(zSql unsafe.Pointer, nByte c.Int, prepFlags c.U
 // * ^The sqlite3_normalized_sql() interface is only available if
 // * the [SQLITE_ENABLE_NORMALIZE] compile-time option is defined.
 //
-// llgo:link (*Stmt).Sql C.sqlite3_sql
+//llgo:link (*Stmt).Sql C.sqlite3_sql
 func (self *Stmt) Sql() *c.Char {
 	return nil
 }
 
-// llgo:link (*Stmt).ExpandedSql C.sqlite3_expanded_sql
+//llgo:link (*Stmt).ExpandedSql C.sqlite3_expanded_sql
 func (self *Stmt) ExpandedSql() *c.Char {
 	return nil
 }
 
-// llgo:link (*Stmt).NormalizedSql C.sqlite3_normalized_sql
+//llgo:link (*Stmt).NormalizedSql C.sqlite3_normalized_sql
 func (self *Stmt) NormalizedSql() *c.Char {
 	return nil
 }
@@ -5856,7 +5855,7 @@ func (self *Stmt) NormalizedSql() *c.Char {
 // * statement, then sqlite3_stmt_readonly(X) returns the same value as
 // * if the EXPLAIN or EXPLAIN QUERY PLAN prefix were omitted.
 //
-// llgo:link (*Stmt).Readonly C.sqlite3_stmt_readonly
+//llgo:link (*Stmt).Readonly C.sqlite3_stmt_readonly
 func (self *Stmt) Readonly() c.Int {
 	return 0
 }
@@ -5870,7 +5869,7 @@ func (self *Stmt) Readonly() c.Int {
 // * ^The sqlite3_stmt_isexplain(S) interface returns 0 if S is
 // * an ordinary statement or a NULL pointer.
 //
-// llgo:link (*Stmt).Isexplain C.sqlite3_stmt_isexplain
+//llgo:link (*Stmt).Isexplain C.sqlite3_stmt_isexplain
 func (self *Stmt) Isexplain() c.Int {
 	return 0
 }
@@ -5907,7 +5906,7 @@ func (self *Stmt) Isexplain() c.Int {
 // * Hence, it is good practice to call [sqlite3_reset(S)]
 // * immediately prior to calling sqlite3_stmt_explain(S,E).
 //
-// llgo:link (*Stmt).Explain C.sqlite3_stmt_explain
+//llgo:link (*Stmt).Explain C.sqlite3_stmt_explain
 func (self *Stmt) Explain(eMode c.Int) c.Int {
 	return 0
 }
@@ -5930,7 +5929,7 @@ func (self *Stmt) Explain(eMode c.Int) c.Int {
 // * for example, in diagnostic routines to search for prepared
 // * statements that are holding a transaction open.
 //
-// llgo:link (*Stmt).Busy C.sqlite3_stmt_busy
+//llgo:link (*Stmt).Busy C.sqlite3_stmt_busy
 func (self *Stmt) Busy() c.Int {
 	return 0
 }
@@ -6074,67 +6073,67 @@ func (self *Stmt) Busy() c.Int {
 // * See also: [sqlite3_bind_parameter_count()],
 // * [sqlite3_bind_parameter_name()], and [sqlite3_bind_parameter_index()].
 //
-// llgo:link (*Stmt).BindBlob C.sqlite3_bind_blob
+//llgo:link (*Stmt).BindBlob C.sqlite3_bind_blob
 func (self *Stmt) BindBlob(_llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer, n c.Int, _llcppg_param5 func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindBlob64 C.sqlite3_bind_blob64
+//llgo:link (*Stmt).BindBlob64 C.sqlite3_bind_blob64
 func (self *Stmt) BindBlob64(_llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer, _llcppg_param4 Uint64, _llcppg_param5 func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindDouble C.sqlite3_bind_double
+//llgo:link (*Stmt).BindDouble C.sqlite3_bind_double
 func (self *Stmt) BindDouble(_llcppg_param2 c.Int, _llcppg_param3 c.Double) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindInt C.sqlite3_bind_int
+//llgo:link (*Stmt).BindInt C.sqlite3_bind_int
 func (self *Stmt) BindInt(_llcppg_param2 c.Int, _llcppg_param3 c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindInt64 C.sqlite3_bind_int64
+//llgo:link (*Stmt).BindInt64 C.sqlite3_bind_int64
 func (self *Stmt) BindInt64(_llcppg_param2 c.Int, _llcppg_param3 Int64) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindNull C.sqlite3_bind_null
+//llgo:link (*Stmt).BindNull C.sqlite3_bind_null
 func (self *Stmt) BindNull(_llcppg_param2 c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindText C.sqlite3_bind_text
+//llgo:link (*Stmt).BindText C.sqlite3_bind_text
 func (self *Stmt) BindText(_llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 c.Int, _llcppg_param5 func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindText16 C.sqlite3_bind_text16
+//llgo:link (*Stmt).BindText16 C.sqlite3_bind_text16
 func (self *Stmt) BindText16(_llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer, _llcppg_param4 c.Int, _llcppg_param5 func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindText64 C.sqlite3_bind_text64
+//llgo:link (*Stmt).BindText64 C.sqlite3_bind_text64
 func (self *Stmt) BindText64(_llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 Uint64, _llcppg_param5 func(_llcppg_param1 unsafe.Pointer), encoding uint8) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindValue C.sqlite3_bind_value
+//llgo:link (*Stmt).BindValue C.sqlite3_bind_value
 func (self *Stmt) BindValue(_llcppg_param2 c.Int, _llcppg_param3 *Value) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindPointer C.sqlite3_bind_pointer
+//llgo:link (*Stmt).BindPointer C.sqlite3_bind_pointer
 func (self *Stmt) BindPointer(_llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer, _llcppg_param4 *c.Char, _llcppg_param5 func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindZeroblob C.sqlite3_bind_zeroblob
+//llgo:link (*Stmt).BindZeroblob C.sqlite3_bind_zeroblob
 func (self *Stmt) BindZeroblob(_llcppg_param2 c.Int, n c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).BindZeroblob64 C.sqlite3_bind_zeroblob64
+//llgo:link (*Stmt).BindZeroblob64 C.sqlite3_bind_zeroblob64
 func (self *Stmt) BindZeroblob64(_llcppg_param2 c.Int, _llcppg_param3 Uint64) c.Int {
 	return 0
 }
@@ -6157,7 +6156,7 @@ func (self *Stmt) BindZeroblob64(_llcppg_param2 c.Int, _llcppg_param3 Uint64) c.
 // * [sqlite3_bind_parameter_name()], and
 // * [sqlite3_bind_parameter_index()].
 //
-// llgo:link (*Stmt).BindParameterCount C.sqlite3_bind_parameter_count
+//llgo:link (*Stmt).BindParameterCount C.sqlite3_bind_parameter_count
 func (self *Stmt) BindParameterCount() c.Int {
 	return 0
 }
@@ -6187,7 +6186,7 @@ func (self *Stmt) BindParameterCount() c.Int {
 // * [sqlite3_bind_parameter_count()], and
 // * [sqlite3_bind_parameter_index()].
 //
-// llgo:link (*Stmt).BindParameterName C.sqlite3_bind_parameter_name
+//llgo:link (*Stmt).BindParameterName C.sqlite3_bind_parameter_name
 func (self *Stmt) BindParameterName(_llcppg_param2 c.Int) *c.Char {
 	return nil
 }
@@ -6207,7 +6206,7 @@ func (self *Stmt) BindParameterName(_llcppg_param2 c.Int) *c.Char {
 // * [sqlite3_bind_parameter_count()], and
 // * [sqlite3_bind_parameter_name()].
 //
-// llgo:link (*Stmt).BindParameterIndex C.sqlite3_bind_parameter_index
+//llgo:link (*Stmt).BindParameterIndex C.sqlite3_bind_parameter_index
 func (self *Stmt) BindParameterIndex(zName *c.Char) c.Int {
 	return 0
 }
@@ -6219,7 +6218,7 @@ func (self *Stmt) BindParameterIndex(zName *c.Char) c.Int {
 // * the [sqlite3_bind_blob | bindings] on a [prepared statement].
 // * ^Use this routine to reset all host parameters to NULL.
 //
-// llgo:link (*Stmt).ClearBindings C.sqlite3_clear_bindings
+//llgo:link (*Stmt).ClearBindings C.sqlite3_clear_bindings
 func (self *Stmt) ClearBindings() c.Int {
 	return 0
 }
@@ -6237,7 +6236,7 @@ func (self *Stmt) ClearBindings() c.Int {
 //
 // * See also: [sqlite3_data_count()]
 //
-// llgo:link (*Stmt).ColumnCount C.sqlite3_column_count
+//llgo:link (*Stmt).ColumnCount C.sqlite3_column_count
 func (self *Stmt) ColumnCount() c.Int {
 	return 0
 }
@@ -6268,12 +6267,12 @@ func (self *Stmt) ColumnCount() c.Int {
 // * then the name of the column is unspecified and may change from
 // * one release of SQLite to the next.
 //
-// llgo:link (*Stmt).ColumnName C.sqlite3_column_name
+//llgo:link (*Stmt).ColumnName C.sqlite3_column_name
 func (self *Stmt) ColumnName(N c.Int) *c.Char {
 	return nil
 }
 
-// llgo:link (*Stmt).ColumnName16 C.sqlite3_column_name16
+//llgo:link (*Stmt).ColumnName16 C.sqlite3_column_name16
 func (self *Stmt) ColumnName16(N c.Int) unsafe.Pointer {
 	return nil
 }
@@ -6319,32 +6318,32 @@ func (self *Stmt) ColumnName16(N c.Int) unsafe.Pointer {
 // * for the same [prepared statement] and result column
 // * at the same time then the results are undefined.
 //
-// llgo:link (*Stmt).ColumnDatabaseName C.sqlite3_column_database_name
+//llgo:link (*Stmt).ColumnDatabaseName C.sqlite3_column_database_name
 func (self *Stmt) ColumnDatabaseName(_llcppg_param2 c.Int) *c.Char {
 	return nil
 }
 
-// llgo:link (*Stmt).ColumnDatabaseName16 C.sqlite3_column_database_name16
+//llgo:link (*Stmt).ColumnDatabaseName16 C.sqlite3_column_database_name16
 func (self *Stmt) ColumnDatabaseName16(_llcppg_param2 c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Stmt).ColumnTableName C.sqlite3_column_table_name
+//llgo:link (*Stmt).ColumnTableName C.sqlite3_column_table_name
 func (self *Stmt) ColumnTableName(_llcppg_param2 c.Int) *c.Char {
 	return nil
 }
 
-// llgo:link (*Stmt).ColumnTableName16 C.sqlite3_column_table_name16
+//llgo:link (*Stmt).ColumnTableName16 C.sqlite3_column_table_name16
 func (self *Stmt) ColumnTableName16(_llcppg_param2 c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Stmt).ColumnOriginName C.sqlite3_column_origin_name
+//llgo:link (*Stmt).ColumnOriginName C.sqlite3_column_origin_name
 func (self *Stmt) ColumnOriginName(_llcppg_param2 c.Int) *c.Char {
 	return nil
 }
 
-// llgo:link (*Stmt).ColumnOriginName16 C.sqlite3_column_origin_name16
+//llgo:link (*Stmt).ColumnOriginName16 C.sqlite3_column_origin_name16
 func (self *Stmt) ColumnOriginName16(_llcppg_param2 c.Int) unsafe.Pointer {
 	return nil
 }
@@ -6378,12 +6377,12 @@ func (self *Stmt) ColumnOriginName16(_llcppg_param2 c.Int) unsafe.Pointer {
 // * is associated with individual values, not with the containers
 // * used to hold those values.
 //
-// llgo:link (*Stmt).ColumnDecltype C.sqlite3_column_decltype
+//llgo:link (*Stmt).ColumnDecltype C.sqlite3_column_decltype
 func (self *Stmt) ColumnDecltype(_llcppg_param2 c.Int) *c.Char {
 	return nil
 }
 
-// llgo:link (*Stmt).ColumnDecltype16 C.sqlite3_column_decltype16
+//llgo:link (*Stmt).ColumnDecltype16 C.sqlite3_column_decltype16
 func (self *Stmt) ColumnDecltype16(_llcppg_param2 c.Int) unsafe.Pointer {
 	return nil
 }
@@ -6469,7 +6468,7 @@ func (self *Stmt) ColumnDecltype16(_llcppg_param2 c.Int) unsafe.Pointer {
 // * then the more specific [error codes] are returned directly
 // * by sqlite3_step().  The use of the "vX" interfaces is recommended.
 //
-// llgo:link (*Stmt).Step C.sqlite3_step
+//llgo:link (*Stmt).Step C.sqlite3_step
 func (self *Stmt) Step() c.Int {
 	return 0
 }
@@ -6492,7 +6491,7 @@ func (self *Stmt) Step() c.Int {
 //
 // * See also: [sqlite3_column_count()]
 //
-// llgo:link (*Stmt).DataCount C.sqlite3_data_count
+//llgo:link (*Stmt).DataCount C.sqlite3_data_count
 func (self *Stmt) DataCount() c.Int {
 	return 0
 }
@@ -6709,52 +6708,52 @@ func (self *Stmt) DataCount() c.Int {
 // * return value is obtained and before any
 // * other SQLite interface is called on the same [database connection].
 //
-// llgo:link (*Stmt).ColumnBlob C.sqlite3_column_blob
+//llgo:link (*Stmt).ColumnBlob C.sqlite3_column_blob
 func (self *Stmt) ColumnBlob(iCol c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Stmt).ColumnDouble C.sqlite3_column_double
+//llgo:link (*Stmt).ColumnDouble C.sqlite3_column_double
 func (self *Stmt) ColumnDouble(iCol c.Int) c.Double {
 	return 0
 }
 
-// llgo:link (*Stmt).ColumnInt C.sqlite3_column_int
+//llgo:link (*Stmt).ColumnInt C.sqlite3_column_int
 func (self *Stmt) ColumnInt(iCol c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).ColumnInt64 C.sqlite3_column_int64
+//llgo:link (*Stmt).ColumnInt64 C.sqlite3_column_int64
 func (self *Stmt) ColumnInt64(iCol c.Int) Int64 {
 	return 0
 }
 
-// llgo:link (*Stmt).ColumnText C.sqlite3_column_text
+//llgo:link (*Stmt).ColumnText C.sqlite3_column_text
 func (self *Stmt) ColumnText(iCol c.Int) *uint8 {
 	return nil
 }
 
-// llgo:link (*Stmt).ColumnText16 C.sqlite3_column_text16
+//llgo:link (*Stmt).ColumnText16 C.sqlite3_column_text16
 func (self *Stmt) ColumnText16(iCol c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Stmt).ColumnValue C.sqlite3_column_value
+//llgo:link (*Stmt).ColumnValue C.sqlite3_column_value
 func (self *Stmt) ColumnValue(iCol c.Int) *Value {
 	return nil
 }
 
-// llgo:link (*Stmt).ColumnBytes C.sqlite3_column_bytes
+//llgo:link (*Stmt).ColumnBytes C.sqlite3_column_bytes
 func (self *Stmt) ColumnBytes(iCol c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).ColumnBytes16 C.sqlite3_column_bytes16
+//llgo:link (*Stmt).ColumnBytes16 C.sqlite3_column_bytes16
 func (self *Stmt) ColumnBytes16(iCol c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).ColumnType C.sqlite3_column_type
+//llgo:link (*Stmt).ColumnType C.sqlite3_column_type
 func (self *Stmt) ColumnType(iCol c.Int) c.Int {
 	return 0
 }
@@ -6784,7 +6783,7 @@ func (self *Stmt) ColumnType(iCol c.Int) c.Int {
 // * statement after it has been finalized can result in undefined and
 // * undesirable behavior such as segfaults and heap corruption.
 //
-// llgo:link (*Stmt).Finalize C.sqlite3_finalize
+//llgo:link (*Stmt).Finalize C.sqlite3_finalize
 func (self *Stmt) Finalize() c.Int {
 	return 0
 }
@@ -6825,7 +6824,7 @@ func (self *Stmt) Finalize() c.Int {
 // * ^The [sqlite3_reset(S)] interface does not change the values
 // * of any [sqlite3_bind_blob|bindings] on the [prepared statement] S.
 //
-// llgo:link (*Stmt).Reset C.sqlite3_reset
+//llgo:link (*Stmt).Reset C.sqlite3_reset
 func (self *Stmt) Reset() c.Int {
 	return 0
 }
@@ -6952,22 +6951,22 @@ func (self *Stmt) Reset() c.Int {
 // * close the database connection nor finalize or reset the prepared
 // * statement in which the function is running.
 //
-// llgo:link (*Sqlite3).CreateFunction C.sqlite3_create_function
+//llgo:link (*Sqlite3).CreateFunction C.sqlite3_create_function
 func (self *Sqlite3) CreateFunction(zFunctionName *c.Char, nArg c.Int, eTextRep c.Int, pApp unsafe.Pointer, xFunc func(_llcppg_param1 *Context, _llcppg_param2 c.Int, _llcppg_param3 **Value), xStep func(_llcppg_param1 *Context, _llcppg_param2 c.Int, _llcppg_param3 **Value), xFinal func(_llcppg_param1 *Context)) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).CreateFunction16 C.sqlite3_create_function16
+//llgo:link (*Sqlite3).CreateFunction16 C.sqlite3_create_function16
 func (self *Sqlite3) CreateFunction16(zFunctionName unsafe.Pointer, nArg c.Int, eTextRep c.Int, pApp unsafe.Pointer, xFunc func(_llcppg_param1 *Context, _llcppg_param2 c.Int, _llcppg_param3 **Value), xStep func(_llcppg_param1 *Context, _llcppg_param2 c.Int, _llcppg_param3 **Value), xFinal func(_llcppg_param1 *Context)) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).CreateFunctionV2 C.sqlite3_create_function_v2
+//llgo:link (*Sqlite3).CreateFunctionV2 C.sqlite3_create_function_v2
 func (self *Sqlite3) CreateFunctionV2(zFunctionName *c.Char, nArg c.Int, eTextRep c.Int, pApp unsafe.Pointer, xFunc func(_llcppg_param1 *Context, _llcppg_param2 c.Int, _llcppg_param3 **Value), xStep func(_llcppg_param1 *Context, _llcppg_param2 c.Int, _llcppg_param3 **Value), xFinal func(_llcppg_param1 *Context), xDestroy func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).CreateWindowFunction C.sqlite3_create_window_function
+//llgo:link (*Sqlite3).CreateWindowFunction C.sqlite3_create_window_function
 func (self *Sqlite3) CreateWindowFunction(zFunctionName *c.Char, nArg c.Int, eTextRep c.Int, pApp unsafe.Pointer, xStep func(_llcppg_param1 *Context, _llcppg_param2 c.Int, _llcppg_param3 **Value), xFinal func(_llcppg_param1 *Context), xValue func(_llcppg_param1 *Context), xInverse func(_llcppg_param1 *Context, _llcppg_param2 c.Int, _llcppg_param3 **Value), xDestroy func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
@@ -6981,12 +6980,12 @@ func (self *Sqlite3) CreateWindowFunction(zFunctionName *c.Char, nArg c.Int, eTe
 // * the use of these functions.  To encourage programmers to avoid
 // * these functions, we will not explain what they do.
 //
-// llgo:link (*Context).AggregateCount C.sqlite3_aggregate_count
+//llgo:link (*Context).AggregateCount C.sqlite3_aggregate_count
 func (self *Context) AggregateCount() c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).Expired C.sqlite3_expired
+//llgo:link (*Stmt).Expired C.sqlite3_expired
 func (self *Stmt) Expired() c.Int {
 	return 0
 }
@@ -7130,77 +7129,77 @@ func MemoryAlarm(_llcppg_param1 func(_llcppg_param1 unsafe.Pointer, _llcppg_para
 // * return value is obtained and before any
 // * other SQLite interface is called on the same [database connection].
 //
-// llgo:link (*Value).Blob C.sqlite3_value_blob
+//llgo:link (*Value).Blob C.sqlite3_value_blob
 func (self *Value) Blob() unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Value).Double C.sqlite3_value_double
+//llgo:link (*Value).Double C.sqlite3_value_double
 func (self *Value) Double() c.Double {
 	return 0
 }
 
-// llgo:link (*Value).Int C.sqlite3_value_int
+//llgo:link (*Value).Int C.sqlite3_value_int
 func (self *Value) Int() c.Int {
 	return 0
 }
 
-// llgo:link (*Value).Int64 C.sqlite3_value_int64
+//llgo:link (*Value).Int64 C.sqlite3_value_int64
 func (self *Value) Int64() Int64 {
 	return 0
 }
 
-// llgo:link (*Value).Pointer C.sqlite3_value_pointer
+//llgo:link (*Value).Pointer C.sqlite3_value_pointer
 func (self *Value) Pointer(_llcppg_param2 *c.Char) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Value).Text C.sqlite3_value_text
+//llgo:link (*Value).Text C.sqlite3_value_text
 func (self *Value) Text() *uint8 {
 	return nil
 }
 
-// llgo:link (*Value).Text16 C.sqlite3_value_text16
+//llgo:link (*Value).Text16 C.sqlite3_value_text16
 func (self *Value) Text16() unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Value).Text16le C.sqlite3_value_text16le
+//llgo:link (*Value).Text16le C.sqlite3_value_text16le
 func (self *Value) Text16le() unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Value).Text16be C.sqlite3_value_text16be
+//llgo:link (*Value).Text16be C.sqlite3_value_text16be
 func (self *Value) Text16be() unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Value).Bytes C.sqlite3_value_bytes
+//llgo:link (*Value).Bytes C.sqlite3_value_bytes
 func (self *Value) Bytes() c.Int {
 	return 0
 }
 
-// llgo:link (*Value).Bytes16 C.sqlite3_value_bytes16
+//llgo:link (*Value).Bytes16 C.sqlite3_value_bytes16
 func (self *Value) Bytes16() c.Int {
 	return 0
 }
 
-// llgo:link (*Value).Type C.sqlite3_value_type
+//llgo:link (*Value).Type C.sqlite3_value_type
 func (self *Value) Type() c.Int {
 	return 0
 }
 
-// llgo:link (*Value).NumericType C.sqlite3_value_numeric_type
+//llgo:link (*Value).NumericType C.sqlite3_value_numeric_type
 func (self *Value) NumericType() c.Int {
 	return 0
 }
 
-// llgo:link (*Value).Nochange C.sqlite3_value_nochange
+//llgo:link (*Value).Nochange C.sqlite3_value_nochange
 func (self *Value) Nochange() c.Int {
 	return 0
 }
 
-// llgo:link (*Value).Frombind C.sqlite3_value_frombind
+//llgo:link (*Value).Frombind C.sqlite3_value_frombind
 func (self *Value) Frombind() c.Int {
 	return 0
 }
@@ -7224,7 +7223,7 @@ func (self *Value) Frombind() c.Int {
 // * not need to know what the internal state of an sqlite3_value object is and
 // * hence should not need to use this interface.
 //
-// llgo:link (*Value).Encoding C.sqlite3_value_encoding
+//llgo:link (*Value).Encoding C.sqlite3_value_encoding
 func (self *Value) Encoding() c.Int {
 	return 0
 }
@@ -7244,7 +7243,7 @@ func (self *Value) Encoding() c.Int {
 // * If the [SQLITE_SUBTYPE] property is omitted, then sqlite3_value_subtype()
 // * might return zero instead of the upstream subtype in some corner cases.
 //
-// llgo:link (*Value).Subtype C.sqlite3_value_subtype
+//llgo:link (*Value).Subtype C.sqlite3_value_subtype
 func (self *Value) Subtype() c.Uint {
 	return 0
 }
@@ -7263,12 +7262,12 @@ func (self *Value) Subtype() c.Uint {
 // * previously obtained from [sqlite3_value_dup()].  ^If V is a NULL pointer
 // * then sqlite3_value_free(V) is a harmless no-op.
 //
-// llgo:link (*Value).Dup C.sqlite3_value_dup
+//llgo:link (*Value).Dup C.sqlite3_value_dup
 func (self *Value) Dup() *Value {
 	return self
 }
 
-// llgo:link (*Value).Free C.sqlite3_value_free
+//llgo:link (*Value).Free C.sqlite3_value_free
 func (self *Value) Free() {
 }
 
@@ -7314,7 +7313,7 @@ func (self *Value) Free() {
 // * This routine must be called from the same thread in which
 // * the aggregate SQL function is running.
 //
-// llgo:link (*Context).Aggregate C.sqlite3_aggregate_context
+//llgo:link (*Context).Aggregate C.sqlite3_aggregate_context
 func (self *Context) Aggregate(nBytes c.Int) unsafe.Pointer {
 	return nil
 }
@@ -7331,7 +7330,7 @@ func (self *Context) Aggregate(nBytes c.Int) unsafe.Pointer {
 // * This routine must be called from the same thread in which
 // * the application-defined function is running.
 //
-// llgo:link (*Context).UserData C.sqlite3_user_data
+//llgo:link (*Context).UserData C.sqlite3_user_data
 func (self *Context) UserData() unsafe.Pointer {
 	return nil
 }
@@ -7345,7 +7344,7 @@ func (self *Context) UserData() unsafe.Pointer {
 // * and [sqlite3_create_function16()] routines that originally
 // * registered the application defined function.
 //
-// llgo:link (*Context).DbHandle C.sqlite3_context_db_handle
+//llgo:link (*Context).DbHandle C.sqlite3_context_db_handle
 func (self *Context) DbHandle() *Sqlite3 {
 	return nil
 }
@@ -7416,12 +7415,12 @@ func (self *Context) DbHandle() *Sqlite3 {
 //
 // * See also: [sqlite3_get_clientdata()] and [sqlite3_set_clientdata()].
 //
-// llgo:link (*Context).Auxdata C.sqlite3_get_auxdata
+//llgo:link (*Context).Auxdata C.sqlite3_get_auxdata
 func (self *Context) Auxdata(N c.Int) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Context).SetAuxdata C.sqlite3_set_auxdata
+//llgo:link (*Context).SetAuxdata C.sqlite3_set_auxdata
 func (self *Context) SetAuxdata(N c.Int, _llcppg_param3 unsafe.Pointer, _llcppg_param4 func(_llcppg_param1 unsafe.Pointer)) {
 }
 
@@ -7477,12 +7476,12 @@ func (self *Context) SetAuxdata(N c.Int, _llcppg_param3 unsafe.Pointer, _llcppg_
 //
 // * See also: [sqlite3_set_auxdata()] and [sqlite3_get_auxdata()].
 //
-// llgo:link (*Sqlite3).Clientdata C.sqlite3_get_clientdata
+//llgo:link (*Sqlite3).Clientdata C.sqlite3_get_clientdata
 func (self *Sqlite3) Clientdata(_llcppg_param2 *c.Char) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Sqlite3).SetClientdata C.sqlite3_set_clientdata
+//llgo:link (*Sqlite3).SetClientdata C.sqlite3_set_clientdata
 func (self *Sqlite3) SetClientdata(_llcppg_param2 *c.Char, _llcppg_param3 unsafe.Pointer, _llcppg_param4 func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
@@ -7633,83 +7632,83 @@ func (self *Sqlite3) SetClientdata(_llcppg_param2 *c.Char, _llcppg_param3 unsafe
 // * than the one containing the application-defined function that received
 // * the [sqlite3_context] pointer, the results are undefined.
 //
-// llgo:link (*Context).ResultBlob C.sqlite3_result_blob
+//llgo:link (*Context).ResultBlob C.sqlite3_result_blob
 func (self *Context) ResultBlob(_llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int, _llcppg_param4 func(_llcppg_param1 unsafe.Pointer)) {
 }
 
-// llgo:link (*Context).ResultBlob64 C.sqlite3_result_blob64
+//llgo:link (*Context).ResultBlob64 C.sqlite3_result_blob64
 func (self *Context) ResultBlob64(_llcppg_param2 unsafe.Pointer, _llcppg_param3 Uint64, _llcppg_param4 func(_llcppg_param1 unsafe.Pointer)) {
 }
 
-// llgo:link (*Context).ResultDouble C.sqlite3_result_double
+//llgo:link (*Context).ResultDouble C.sqlite3_result_double
 func (self *Context) ResultDouble(_llcppg_param2 c.Double) {
 }
 
-// llgo:link (*Context).ResultError C.sqlite3_result_error
+//llgo:link (*Context).ResultError C.sqlite3_result_error
 func (self *Context) ResultError(_llcppg_param2 *c.Char, _llcppg_param3 c.Int) {
 }
 
-// llgo:link (*Context).ResultError16 C.sqlite3_result_error16
+//llgo:link (*Context).ResultError16 C.sqlite3_result_error16
 func (self *Context) ResultError16(_llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int) {
 }
 
-// llgo:link (*Context).ResultErrorToobig C.sqlite3_result_error_toobig
+//llgo:link (*Context).ResultErrorToobig C.sqlite3_result_error_toobig
 func (self *Context) ResultErrorToobig() {
 }
 
-// llgo:link (*Context).ResultErrorNomem C.sqlite3_result_error_nomem
+//llgo:link (*Context).ResultErrorNomem C.sqlite3_result_error_nomem
 func (self *Context) ResultErrorNomem() {
 }
 
-// llgo:link (*Context).ResultErrorCode C.sqlite3_result_error_code
+//llgo:link (*Context).ResultErrorCode C.sqlite3_result_error_code
 func (self *Context) ResultErrorCode(_llcppg_param2 c.Int) {
 }
 
-// llgo:link (*Context).ResultInt C.sqlite3_result_int
+//llgo:link (*Context).ResultInt C.sqlite3_result_int
 func (self *Context) ResultInt(_llcppg_param2 c.Int) {
 }
 
-// llgo:link (*Context).ResultInt64 C.sqlite3_result_int64
+//llgo:link (*Context).ResultInt64 C.sqlite3_result_int64
 func (self *Context) ResultInt64(_llcppg_param2 Int64) {
 }
 
-// llgo:link (*Context).ResultNull C.sqlite3_result_null
+//llgo:link (*Context).ResultNull C.sqlite3_result_null
 func (self *Context) ResultNull() {
 }
 
-// llgo:link (*Context).ResultText C.sqlite3_result_text
+//llgo:link (*Context).ResultText C.sqlite3_result_text
 func (self *Context) ResultText(_llcppg_param2 *c.Char, _llcppg_param3 c.Int, _llcppg_param4 func(_llcppg_param1 unsafe.Pointer)) {
 }
 
-// llgo:link (*Context).ResultText64 C.sqlite3_result_text64
+//llgo:link (*Context).ResultText64 C.sqlite3_result_text64
 func (self *Context) ResultText64(_llcppg_param2 *c.Char, _llcppg_param3 Uint64, _llcppg_param4 func(_llcppg_param1 unsafe.Pointer), encoding uint8) {
 }
 
-// llgo:link (*Context).ResultText16 C.sqlite3_result_text16
+//llgo:link (*Context).ResultText16 C.sqlite3_result_text16
 func (self *Context) ResultText16(_llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int, _llcppg_param4 func(_llcppg_param1 unsafe.Pointer)) {
 }
 
-// llgo:link (*Context).ResultText16le C.sqlite3_result_text16le
+//llgo:link (*Context).ResultText16le C.sqlite3_result_text16le
 func (self *Context) ResultText16le(_llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int, _llcppg_param4 func(_llcppg_param1 unsafe.Pointer)) {
 }
 
-// llgo:link (*Context).ResultText16be C.sqlite3_result_text16be
+//llgo:link (*Context).ResultText16be C.sqlite3_result_text16be
 func (self *Context) ResultText16be(_llcppg_param2 unsafe.Pointer, _llcppg_param3 c.Int, _llcppg_param4 func(_llcppg_param1 unsafe.Pointer)) {
 }
 
-// llgo:link (*Context).ResultValue C.sqlite3_result_value
+//llgo:link (*Context).ResultValue C.sqlite3_result_value
 func (self *Context) ResultValue(_llcppg_param2 *Value) {
 }
 
-// llgo:link (*Context).ResultPointer C.sqlite3_result_pointer
+//llgo:link (*Context).ResultPointer C.sqlite3_result_pointer
 func (self *Context) ResultPointer(_llcppg_param2 unsafe.Pointer, _llcppg_param3 *c.Char, _llcppg_param4 func(_llcppg_param1 unsafe.Pointer)) {
 }
 
-// llgo:link (*Context).ResultZeroblob C.sqlite3_result_zeroblob
+//llgo:link (*Context).ResultZeroblob C.sqlite3_result_zeroblob
 func (self *Context) ResultZeroblob(n c.Int) {
 }
 
-// llgo:link (*Context).ResultZeroblob64 C.sqlite3_result_zeroblob64
+//llgo:link (*Context).ResultZeroblob64 C.sqlite3_result_zeroblob64
 func (self *Context) ResultZeroblob64(n Uint64) c.Int {
 	return 0
 }
@@ -7739,7 +7738,7 @@ func (self *Context) ResultZeroblob64(n Uint64) c.Int {
 // * an error.  Future versions of SQLite might enable -DSQLITE_STRICT_SUBTYPE=1
 // * by default.
 //
-// llgo:link (*Context).ResultSubtype C.sqlite3_result_subtype
+//llgo:link (*Context).ResultSubtype C.sqlite3_result_subtype
 func (self *Context) ResultSubtype(_llcppg_param2 c.Uint) {
 }
 
@@ -7823,17 +7822,17 @@ func (self *Context) ResultSubtype(_llcppg_param2 c.Uint) {
 //
 // * See also:  [sqlite3_collation_needed()] and [sqlite3_collation_needed16()].
 //
-// llgo:link (*Sqlite3).CreateCollation C.sqlite3_create_collation
+//llgo:link (*Sqlite3).CreateCollation C.sqlite3_create_collation
 func (self *Sqlite3) CreateCollation(zName *c.Char, eTextRep c.Int, pArg unsafe.Pointer, xCompare func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer, _llcppg_param4 c.Int, _llcppg_param5 unsafe.Pointer) c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).CreateCollationV2 C.sqlite3_create_collation_v2
+//llgo:link (*Sqlite3).CreateCollationV2 C.sqlite3_create_collation_v2
 func (self *Sqlite3) CreateCollationV2(zName *c.Char, eTextRep c.Int, pArg unsafe.Pointer, xCompare func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer, _llcppg_param4 c.Int, _llcppg_param5 unsafe.Pointer) c.Int, xDestroy func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).CreateCollation16 C.sqlite3_create_collation16
+//llgo:link (*Sqlite3).CreateCollation16 C.sqlite3_create_collation16
 func (self *Sqlite3) CreateCollation16(zName unsafe.Pointer, eTextRep c.Int, pArg unsafe.Pointer, xCompare func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 unsafe.Pointer, _llcppg_param4 c.Int, _llcppg_param5 unsafe.Pointer) c.Int) c.Int {
 	return 0
 }
@@ -7864,12 +7863,12 @@ func (self *Sqlite3) CreateCollation16(zName unsafe.Pointer, eTextRep c.Int, pAr
 // * [sqlite3_create_collation()], [sqlite3_create_collation16()], or
 // * [sqlite3_create_collation_v2()].
 //
-// llgo:link (*Sqlite3).CollationNeeded C.sqlite3_collation_needed
+//llgo:link (*Sqlite3).CollationNeeded C.sqlite3_collation_needed
 func (self *Sqlite3) CollationNeeded(_llcppg_param2 unsafe.Pointer, _llcppg_param3 func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *Sqlite3, _llcppg_param3 c.Int, _llcppg_param4 *c.Char)) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).CollationNeeded16 C.sqlite3_collation_needed16
+//llgo:link (*Sqlite3).CollationNeeded16 C.sqlite3_collation_needed16
 func (self *Sqlite3) CollationNeeded16(_llcppg_param2 unsafe.Pointer, _llcppg_param3 func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *Sqlite3, _llcppg_param3 c.Int, _llcppg_param4 unsafe.Pointer)) c.Int {
 	return 0
 }
@@ -8016,7 +8015,7 @@ var Sqlite3DataDirectory *c.Char
 // * connection while this routine is running, then the return value
 // * is undefined.
 //
-// llgo:link (*Sqlite3).Autocommit C.sqlite3_get_autocommit
+//llgo:link (*Sqlite3).Autocommit C.sqlite3_get_autocommit
 func (self *Sqlite3) Autocommit() c.Int {
 	return 0
 }
@@ -8031,7 +8030,7 @@ func (self *Sqlite3) Autocommit() c.Int {
 // * to the [sqlite3_prepare_v2()] call (or its variants) that was used to
 // * create the statement in the first place.
 //
-// llgo:link (*Stmt).DbHandle C.sqlite3_db_handle
+//llgo:link (*Stmt).DbHandle C.sqlite3_db_handle
 func (self *Stmt) DbHandle() *Sqlite3 {
 	return nil
 }
@@ -8055,7 +8054,7 @@ func (self *Stmt) DbHandle() *Sqlite3 {
 // * threads should mutex-protect calls to this API and should make their own
 // * private copy of the result prior to releasing the mutex.
 //
-// llgo:link (*Sqlite3).DbName C.sqlite3_db_name
+//llgo:link (*Sqlite3).DbName C.sqlite3_db_name
 func (self *Sqlite3) DbName(N c.Int) *c.Char {
 	return nil
 }
@@ -8089,7 +8088,7 @@ func (self *Sqlite3) DbName(N c.Int) *c.Char {
 // * <li> [sqlite3_filename_wal()]
 // * </ul>
 //
-// llgo:link (*Sqlite3).DbFilename C.sqlite3_db_filename
+//llgo:link (*Sqlite3).DbFilename C.sqlite3_db_filename
 func (self *Sqlite3) DbFilename(zDbName *c.Char) Filename {
 	return nil
 }
@@ -8101,7 +8100,7 @@ func (self *Sqlite3) DbFilename(zDbName *c.Char) Filename {
 // * of connection D is read-only, 0 if it is read/write, or -1 if N is not
 // * the name of a database on connection D.
 //
-// llgo:link (*Sqlite3).DbReadonly C.sqlite3_db_readonly
+//llgo:link (*Sqlite3).DbReadonly C.sqlite3_db_readonly
 func (self *Sqlite3) DbReadonly(zDbName *c.Char) c.Int {
 	return 0
 }
@@ -8121,7 +8120,7 @@ func (self *Sqlite3) DbReadonly(zDbName *c.Char) c.Int {
 // * ^If the S argument to sqlite3_txn_state(D,S) is not the name of
 // * a valid schema, then -1 is returned.
 //
-// llgo:link (*Sqlite3).TxnState C.sqlite3_txn_state
+//llgo:link (*Sqlite3).TxnState C.sqlite3_txn_state
 func (self *Sqlite3) TxnState(zSchema *c.Char) c.Int {
 	return 0
 }
@@ -8139,7 +8138,7 @@ func (self *Sqlite3) TxnState(zSchema *c.Char) c.Int {
 // * [sqlite3_next_stmt(D,S)] must refer to an open database
 // * connection and in particular must not be a NULL pointer.
 //
-// llgo:link (*Sqlite3).NextStmt C.sqlite3_next_stmt
+//llgo:link (*Sqlite3).NextStmt C.sqlite3_next_stmt
 func (self *Sqlite3) NextStmt(pStmt *Stmt) *Stmt {
 	return nil
 }
@@ -8190,12 +8189,12 @@ func (self *Sqlite3) NextStmt(pStmt *Stmt) *Stmt {
 //
 // * See also the [sqlite3_update_hook()] interface.
 //
-// llgo:link (*Sqlite3).CommitHook C.sqlite3_commit_hook
+//llgo:link (*Sqlite3).CommitHook C.sqlite3_commit_hook
 func (self *Sqlite3) CommitHook(_llcppg_param2 func(_llcppg_param1 unsafe.Pointer) c.Int, _llcppg_param3 unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
 
-// llgo:link (*Sqlite3).RollbackHook C.sqlite3_rollback_hook
+//llgo:link (*Sqlite3).RollbackHook C.sqlite3_rollback_hook
 func (self *Sqlite3) RollbackHook(_llcppg_param2 func(_llcppg_param1 unsafe.Pointer), _llcppg_param3 unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
@@ -8257,7 +8256,7 @@ func (self *Sqlite3) RollbackHook(_llcppg_param2 func(_llcppg_param1 unsafe.Poin
 // * &nbsp;   }
 // * </pre></blockquote>
 //
-// llgo:link (*Sqlite3).AutovacuumPages C.sqlite3_autovacuum_pages
+//llgo:link (*Sqlite3).AutovacuumPages C.sqlite3_autovacuum_pages
 func (self *Sqlite3) AutovacuumPages(_llcppg_param2 func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *c.Char, _llcppg_param3 c.Uint, _llcppg_param4 c.Uint, _llcppg_param5 c.Uint) c.Uint, _llcppg_param3 unsafe.Pointer, _llcppg_param4 func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
@@ -8318,7 +8317,7 @@ func (self *Sqlite3) AutovacuumPages(_llcppg_param2 func(_llcppg_param1 unsafe.P
 // * See also the [sqlite3_commit_hook()], [sqlite3_rollback_hook()],
 // * and [sqlite3_preupdate_hook()] interfaces.
 //
-// llgo:link (*Sqlite3).UpdateHook C.sqlite3_update_hook
+//llgo:link (*Sqlite3).UpdateHook C.sqlite3_update_hook
 func (self *Sqlite3) UpdateHook(_llcppg_param2 func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 c.Int, _llcppg_param3 *c.Char, _llcppg_param4 *c.Char, _llcppg_param5 Int64), _llcppg_param3 unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
@@ -8396,7 +8395,7 @@ func ReleaseMemory(_llcppg_param1 c.Int) c.Int
 //
 // * See also: [sqlite3_release_memory()]
 //
-// llgo:link (*Sqlite3).DbReleaseMemory C.sqlite3_db_release_memory
+//llgo:link (*Sqlite3).DbReleaseMemory C.sqlite3_db_release_memory
 func (self *Sqlite3) DbReleaseMemory() c.Int {
 	return 0
 }
@@ -8528,7 +8527,7 @@ func SoftHeapLimit(N c.Int)
 // * parsed, if that has not already been done, and returns an error if
 // * any errors are encountered while loading the schema.
 //
-// llgo:link (*Sqlite3).TableColumnMetadata C.sqlite3_table_column_metadata
+//llgo:link (*Sqlite3).TableColumnMetadata C.sqlite3_table_column_metadata
 func (self *Sqlite3) TableColumnMetadata(zDbName *c.Char, zTableName *c.Char, zColumnName *c.Char, pzDataType **c.Char, pzCollSeq **c.Char, pNotNull *c.Int, pPrimaryKey *c.Int, pAutoinc *c.Int) c.Int {
 	return 0
 }
@@ -8622,12 +8621,12 @@ func ResetAutoExtension()
 //
 // * See also: [sqlite3_drop_modules()]
 //
-// llgo:link (*Sqlite3).CreateModule C.sqlite3_create_module
+//llgo:link (*Sqlite3).CreateModule C.sqlite3_create_module
 func (self *Sqlite3) CreateModule(zName *c.Char, p *Module, pClientData unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*Sqlite3).CreateModuleV2 C.sqlite3_create_module_v2
+//llgo:link (*Sqlite3).CreateModuleV2 C.sqlite3_create_module_v2
 func (self *Sqlite3) CreateModuleV2(zName *c.Char, p *Module, pClientData unsafe.Pointer, xDestroy func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
@@ -8643,7 +8642,7 @@ func (self *Sqlite3) CreateModuleV2(zName *c.Char, p *Module, pClientData unsafe
 //
 // * See also: [sqlite3_create_module()]
 //
-// llgo:link (*Sqlite3).DropModules C.sqlite3_drop_modules
+//llgo:link (*Sqlite3).DropModules C.sqlite3_drop_modules
 func (self *Sqlite3) DropModules(azKeep **c.Char) c.Int {
 	return 0
 }
@@ -8655,7 +8654,7 @@ func (self *Sqlite3) DropModules(azKeep **c.Char) c.Int {
 // * to declare the format (the names and datatypes of the columns) of
 // * the virtual tables they implement.
 //
-// llgo:link (*Sqlite3).DeclareVtab C.sqlite3_declare_vtab
+//llgo:link (*Sqlite3).DeclareVtab C.sqlite3_declare_vtab
 func (self *Sqlite3) DeclareVtab(zSQL *c.Char) c.Int {
 	return 0
 }
@@ -8676,7 +8675,7 @@ func (self *Sqlite3) DeclareVtab(zSQL *c.Char) c.Int {
 // * purpose is to be a placeholder function that can be overloaded
 // * by a [virtual table].
 //
-// llgo:link (*Sqlite3).OverloadFunction C.sqlite3_overload_function
+//llgo:link (*Sqlite3).OverloadFunction C.sqlite3_overload_function
 func (self *Sqlite3) OverloadFunction(zFuncName *c.Char, nArg c.Int) c.Int {
 	return 0
 }
@@ -8763,7 +8762,7 @@ func (self *Sqlite3) OverloadFunction(zFuncName *c.Char, nArg c.Int) c.Int {
 // * [sqlite3_blob_reopen()], [sqlite3_blob_read()],
 // * [sqlite3_blob_bytes()], [sqlite3_blob_write()].
 //
-// llgo:link (*Sqlite3).BlobOpen C.sqlite3_blob_open
+//llgo:link (*Sqlite3).BlobOpen C.sqlite3_blob_open
 func (self *Sqlite3) BlobOpen(zDb *c.Char, zTable *c.Char, zColumn *c.Char, iRow Int64, flags c.Int, ppBlob **Blob) c.Int {
 	return 0
 }
@@ -8790,7 +8789,7 @@ func (self *Sqlite3) BlobOpen(zDb *c.Char, zTable *c.Char, zColumn *c.Char, iRow
 //
 // * ^This function sets the database handle error code and message.
 //
-// llgo:link (*Blob).Reopen C.sqlite3_blob_reopen
+//llgo:link (*Blob).Reopen C.sqlite3_blob_reopen
 func (self *Blob) Reopen(_llcppg_param2 Int64) c.Int {
 	return 0
 }
@@ -8815,7 +8814,7 @@ func (self *Blob) Reopen(_llcppg_param2 Int64) c.Int {
 // * is passed a valid open blob handle, the values returned by the
 // * sqlite3_errcode() and sqlite3_errmsg() functions are set before returning.
 //
-// llgo:link (*Blob).Close C.sqlite3_blob_close
+//llgo:link (*Blob).Close C.sqlite3_blob_close
 func (self *Blob) Close() c.Int {
 	return 0
 }
@@ -8833,7 +8832,7 @@ func (self *Blob) Close() c.Int {
 // * been closed by [sqlite3_blob_close()].  Passing any other pointer in
 // * to this routine results in undefined and probably undesirable behavior.
 //
-// llgo:link (*Blob).Bytes C.sqlite3_blob_bytes
+//llgo:link (*Blob).Bytes C.sqlite3_blob_bytes
 func (self *Blob) Bytes() c.Int {
 	return 0
 }
@@ -8864,7 +8863,7 @@ func (self *Blob) Bytes() c.Int {
 //
 // * See also: [sqlite3_blob_write()].
 //
-// llgo:link (*Blob).Read C.sqlite3_blob_read
+//llgo:link (*Blob).Read C.sqlite3_blob_read
 func (self *Blob) Read(Z unsafe.Pointer, N c.Int, iOffset c.Int) c.Int {
 	return 0
 }
@@ -8908,7 +8907,7 @@ func (self *Blob) Read(Z unsafe.Pointer, N c.Int, iOffset c.Int) c.Int {
 //
 // * See also: [sqlite3_blob_read()].
 //
-// llgo:link (*Blob).Write C.sqlite3_blob_write
+//llgo:link (*Blob).Write C.sqlite3_blob_write
 func (self *Blob) Write(z unsafe.Pointer, n c.Int, iOffset c.Int) c.Int {
 	return 0
 }
@@ -8944,12 +8943,12 @@ func (self *Blob) Write(z unsafe.Pointer, n c.Int, iOffset c.Int) c.Int {
 //go:linkname VfsFind C.sqlite3_vfs_find
 func VfsFind(zVfsName *c.Char) *Vfs
 
-// llgo:link (*Vfs).Register C.sqlite3_vfs_register
+//llgo:link (*Vfs).Register C.sqlite3_vfs_register
 func (self *Vfs) Register(makeDflt c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Vfs).Unregister C.sqlite3_vfs_unregister
+//llgo:link (*Vfs).Unregister C.sqlite3_vfs_unregister
 func (self *Vfs) Unregister() c.Int {
 	return 0
 }
@@ -9070,20 +9069,20 @@ func (self *Vfs) Unregister() c.Int {
 //go:linkname MutexAlloc C.sqlite3_mutex_alloc
 func MutexAlloc(_llcppg_param1 c.Int) *Mutex
 
-// llgo:link (*Mutex).Free C.sqlite3_mutex_free
+//llgo:link (*Mutex).Free C.sqlite3_mutex_free
 func (self *Mutex) Free() {
 }
 
-// llgo:link (*Mutex).Enter C.sqlite3_mutex_enter
+//llgo:link (*Mutex).Enter C.sqlite3_mutex_enter
 func (self *Mutex) Enter() {
 }
 
-// llgo:link (*Mutex).Try C.sqlite3_mutex_try
+//llgo:link (*Mutex).Try C.sqlite3_mutex_try
 func (self *Mutex) Try() c.Int {
 	return 0
 }
 
-// llgo:link (*Mutex).Leave C.sqlite3_mutex_leave
+//llgo:link (*Mutex).Leave C.sqlite3_mutex_leave
 func (self *Mutex) Leave() {
 }
 
@@ -9096,7 +9095,7 @@ func (self *Mutex) Leave() {
 // * ^If the [threading mode] is Single-thread or Multi-thread then this
 // * routine returns a NULL pointer.
 //
-// llgo:link (*Sqlite3).DbMutex C.sqlite3_db_mutex
+//llgo:link (*Sqlite3).DbMutex C.sqlite3_db_mutex
 func (self *Sqlite3) DbMutex() *Mutex {
 	return nil
 }
@@ -9141,7 +9140,7 @@ func (self *Sqlite3) DbMutex() *Mutex {
 //
 // * See also: [file control opcodes]
 //
-// llgo:link (*Sqlite3).FileControl C.sqlite3_file_control
+//llgo:link (*Sqlite3).FileControl C.sqlite3_file_control
 func (self *Sqlite3) FileControl(zDbName *c.Char, op c.Int, _llcppg_param4 unsafe.Pointer) c.Int {
 	return 0
 }
@@ -9244,7 +9243,7 @@ func KeywordCheck(_llcppg_param1 *c.Char, _llcppg_param2 c.Int) c.Int
 // * the value set for [sqlite3_limit](D,[SQLITE_LIMIT_LENGTH]) instead
 // * of [SQLITE_MAX_LENGTH].
 //
-// llgo:link (*Sqlite3).StrNew C.sqlite3_str_new
+//llgo:link (*Sqlite3).StrNew C.sqlite3_str_new
 func (self *Sqlite3) StrNew() *Str {
 	return nil
 }
@@ -9261,7 +9260,7 @@ func (self *Sqlite3) StrNew() *Str {
 // * [sqlite3_str_finish(X)] interface will also return a NULL pointer if the
 // * string in [sqlite3_str] object X is zero bytes long.
 //
-// llgo:link (*Str).Finish C.sqlite3_str_finish
+//llgo:link (*Str).Finish C.sqlite3_str_finish
 func (self *Str) Finish() *c.Char {
 	return nil
 }
@@ -9297,27 +9296,27 @@ func (self *Str) Finish() *c.Char {
 // * is recorded in the [sqlite3_str] object and can be recovered by a
 // * subsequent call to [sqlite3_str_errcode(X)].
 //
-// llgo:link (*Str).Appendf C.sqlite3_str_appendf
+//llgo:link (*Str).Appendf C.sqlite3_str_appendf
 func (self *Str) Appendf(zFormat *c.Char, __llgo_va_list ...any) {
 }
 
-// llgo:link (*Str).Vappendf C.sqlite3_str_vappendf
+//llgo:link (*Str).Vappendf C.sqlite3_str_vappendf
 func (self *Str) Vappendf(zFormat *c.Char, _llcppg_param3 c.VaList) {
 }
 
-// llgo:link (*Str).Append C.sqlite3_str_append
+//llgo:link (*Str).Append C.sqlite3_str_append
 func (self *Str) Append(zIn *c.Char, N c.Int) {
 }
 
-// llgo:link (*Str).Appendall C.sqlite3_str_appendall
+//llgo:link (*Str).Appendall C.sqlite3_str_appendall
 func (self *Str) Appendall(zIn *c.Char) {
 }
 
-// llgo:link (*Str).Appendchar C.sqlite3_str_appendchar
+//llgo:link (*Str).Appendchar C.sqlite3_str_appendchar
 func (self *Str) Appendchar(N c.Int, C c.Char) {
 }
 
-// llgo:link (*Str).Reset C.sqlite3_str_reset
+//llgo:link (*Str).Reset C.sqlite3_str_reset
 func (self *Str) Reset() {
 }
 
@@ -9349,17 +9348,17 @@ func (self *Str) Reset() {
 // * outside the range of 0 to [sqlite3_str_length(X)] and do not read or
 // * write any byte after any subsequent sqlite3_str method call.
 //
-// llgo:link (*Str).Errcode C.sqlite3_str_errcode
+//llgo:link (*Str).Errcode C.sqlite3_str_errcode
 func (self *Str) Errcode() c.Int {
 	return 0
 }
 
-// llgo:link (*Str).Length C.sqlite3_str_length
+//llgo:link (*Str).Length C.sqlite3_str_length
 func (self *Str) Length() c.Int {
 	return 0
 }
 
-// llgo:link (*Str).Value C.sqlite3_str_value
+//llgo:link (*Str).Value C.sqlite3_str_value
 func (self *Str) Value() *c.Char {
 	return nil
 }
@@ -9417,7 +9416,7 @@ func Status64(op c.Int, pCurrent *Int64, pHighwater *Int64, resetFlag c.Int) c.I
 //
 // * See also: [sqlite3_status()] and [sqlite3_stmt_status()].
 //
-// llgo:link (*Sqlite3).DbStatus C.sqlite3_db_status
+//llgo:link (*Sqlite3).DbStatus C.sqlite3_db_status
 func (self *Sqlite3) DbStatus(op c.Int, pCur *c.Int, pHiwtr *c.Int, resetFlg c.Int) c.Int {
 	return 0
 }
@@ -9445,7 +9444,7 @@ func (self *Sqlite3) DbStatus(op c.Int, pCur *c.Int, pHiwtr *c.Int, resetFlg c.I
 //
 // * See also: [sqlite3_status()] and [sqlite3_db_status()].
 //
-// llgo:link (*Stmt).Status C.sqlite3_stmt_status
+//llgo:link (*Stmt).Status C.sqlite3_stmt_status
 func (self *Stmt) Status(op c.Int, resetFlg c.Int) c.Int {
 	return 0
 }
@@ -9645,27 +9644,27 @@ func (self *Stmt) Status(op c.Int, resetFlg c.Int) c.Int {
 // * <li> The [sqlite3_rsync] utility program.
 // * </ul>
 //
-// llgo:link (*Sqlite3).BackupInit C.sqlite3_backup_init
+//llgo:link (*Sqlite3).BackupInit C.sqlite3_backup_init
 func (self *Sqlite3) BackupInit(zDestName *c.Char, pSource *Sqlite3, zSourceName *c.Char) *Backup {
 	return nil
 }
 
-// llgo:link (*Backup).Step C.sqlite3_backup_step
+//llgo:link (*Backup).Step C.sqlite3_backup_step
 func (self *Backup) Step(nPage c.Int) c.Int {
 	return 0
 }
 
-// llgo:link (*Backup).Finish C.sqlite3_backup_finish
+//llgo:link (*Backup).Finish C.sqlite3_backup_finish
 func (self *Backup) Finish() c.Int {
 	return 0
 }
 
-// llgo:link (*Backup).Remaining C.sqlite3_backup_remaining
+//llgo:link (*Backup).Remaining C.sqlite3_backup_remaining
 func (self *Backup) Remaining() c.Int {
 	return 0
 }
 
-// llgo:link (*Backup).Pagecount C.sqlite3_backup_pagecount
+//llgo:link (*Backup).Pagecount C.sqlite3_backup_pagecount
 func (self *Backup) Pagecount() c.Int {
 	return 0
 }
@@ -9781,7 +9780,7 @@ func Log(iErrCode c.Int, zFormat *c.Char, __llgo_va_list ...any)
 // * [wal_autocheckpoint pragma] both invoke [sqlite3_wal_hook()] and will
 // * overwrite any prior [sqlite3_wal_hook()] settings.
 //
-// llgo:link (*Sqlite3).WalHook C.sqlite3_wal_hook
+//llgo:link (*Sqlite3).WalHook C.sqlite3_wal_hook
 func (self *Sqlite3) WalHook(_llcppg_param2 func(_llcppg_param1 unsafe.Pointer, _llcppg_param2 *Sqlite3, _llcppg_param3 *c.Char, _llcppg_param4 c.Int) c.Int, _llcppg_param3 unsafe.Pointer) unsafe.Pointer {
 	return nil
 }
@@ -9814,7 +9813,7 @@ func (self *Sqlite3) WalHook(_llcppg_param2 func(_llcppg_param1 unsafe.Pointer, 
 // * is only necessary if the default setting is found to be suboptimal
 // * for a particular application.
 //
-// llgo:link (*Sqlite3).WalAutocheckpoint C.sqlite3_wal_autocheckpoint
+//llgo:link (*Sqlite3).WalAutocheckpoint C.sqlite3_wal_autocheckpoint
 func (self *Sqlite3) WalAutocheckpoint(N c.Int) c.Int {
 	return 0
 }
@@ -9838,7 +9837,7 @@ func (self *Sqlite3) WalAutocheckpoint(N c.Int) c.Int {
 // * start a callback but which do not need the full power (and corresponding
 // * complication) of [sqlite3_wal_checkpoint_v2()].
 //
-// llgo:link (*Sqlite3).WalCheckpoint C.sqlite3_wal_checkpoint
+//llgo:link (*Sqlite3).WalCheckpoint C.sqlite3_wal_checkpoint
 func (self *Sqlite3) WalCheckpoint(zDb *c.Char) c.Int {
 	return 0
 }
@@ -9934,7 +9933,7 @@ func (self *Sqlite3) WalCheckpoint(zDb *c.Char) c.Int {
 // * ^The [PRAGMA wal_checkpoint] command can be used to invoke this interface
 // * from SQL.
 //
-// llgo:link (*Sqlite3).WalCheckpointV2 C.sqlite3_wal_checkpoint_v2
+//llgo:link (*Sqlite3).WalCheckpointV2 C.sqlite3_wal_checkpoint_v2
 func (self *Sqlite3) WalCheckpointV2(zDb *c.Char, eMode c.Int, pnLog *c.Int, pnCkpt *c.Int) c.Int {
 	return 0
 }
@@ -9956,7 +9955,7 @@ func (self *Sqlite3) WalCheckpointV2(zDb *c.Char, eMode c.Int, pnLog *c.Int, pnC
 // * of parameters after C depend on which [virtual table configuration option]
 // * is used.
 //
-// llgo:link (*Sqlite3).VtabConfig C.sqlite3_vtab_config
+//llgo:link (*Sqlite3).VtabConfig C.sqlite3_vtab_config
 func (self *Sqlite3) VtabConfig(op c.Int, __llgo_va_list ...any) c.Int {
 	return 0
 }
@@ -9970,7 +9969,7 @@ func (self *Sqlite3) VtabConfig(op c.Int, __llgo_va_list ...any) c.Int {
 // * of the SQL statement that triggered the call to the [xUpdate] method of the
 // * [virtual table].
 //
-// llgo:link (*Sqlite3).VtabOnConflict C.sqlite3_vtab_on_conflict
+//llgo:link (*Sqlite3).VtabOnConflict C.sqlite3_vtab_on_conflict
 func (self *Sqlite3) VtabOnConflict() c.Int {
 	return 0
 }
@@ -9998,7 +9997,7 @@ func (self *Sqlite3) VtabOnConflict() c.Int {
 // * current implementation, the sqlite3_vtab_nochange() interface does always
 // * returns false for the enhanced [UPDATE FROM] statement.
 //
-// llgo:link (*Context).VtabNochange C.sqlite3_vtab_nochange
+//llgo:link (*Context).VtabNochange C.sqlite3_vtab_nochange
 func (self *Context) VtabNochange() c.Int {
 	return 0
 }
@@ -10035,7 +10034,7 @@ func (self *Context) VtabNochange() c.Int {
 // * <li><p> Otherwise, "BINARY" is returned.
 // * </ol>
 //
-// llgo:link (*IndexInfo).VtabCollation C.sqlite3_vtab_collation
+//llgo:link (*IndexInfo).VtabCollation C.sqlite3_vtab_collation
 func (self *IndexInfo) VtabCollation(_llcppg_param2 c.Int) *c.Char {
 	return nil
 }
@@ -10131,7 +10130,7 @@ func (self *IndexInfo) VtabCollation(_llcppg_param2 c.Int) *c.Char {
 // * valid to do so, on the other hand, might cause SQLite to return incorrect
 // * results.
 //
-// llgo:link (*IndexInfo).VtabDistinct C.sqlite3_vtab_distinct
+//llgo:link (*IndexInfo).VtabDistinct C.sqlite3_vtab_distinct
 func (self *IndexInfo) VtabDistinct() c.Int {
 	return 0
 }
@@ -10206,7 +10205,7 @@ func (self *IndexInfo) VtabDistinct() c.Int {
 // * [sqlite3_vtab_in_next()] to find all values on the right-hand side
 // * of the IN constraint.
 //
-// llgo:link (*IndexInfo).VtabIn C.sqlite3_vtab_in
+//llgo:link (*IndexInfo).VtabIn C.sqlite3_vtab_in
 func (self *IndexInfo) VtabIn(iCons c.Int, bHandle c.Int) c.Int {
 	return 0
 }
@@ -10255,12 +10254,12 @@ func (self *IndexInfo) VtabIn(iCons c.Int, bHandle c.Int) c.Int {
 // * implementation needs to retain the *ppOut values for longer, it must make
 // * copies.  The *ppOut values are [protected sqlite3_value|protected].
 //
-// llgo:link (*Value).VtabInFirst C.sqlite3_vtab_in_first
+//llgo:link (*Value).VtabInFirst C.sqlite3_vtab_in_first
 func (self *Value) VtabInFirst(ppOut **Value) c.Int {
 	return 0
 }
 
-// llgo:link (*Value).VtabInNext C.sqlite3_vtab_in_next
+//llgo:link (*Value).VtabInNext C.sqlite3_vtab_in_next
 func (self *Value) VtabInNext(ppOut **Value) c.Int {
 	return 0
 }
@@ -10304,7 +10303,7 @@ func (self *Value) VtabInNext(ppOut **Value) c.Int {
 // * The "_rhs_" in the name of this routine is an abbreviation for
 // * "Right-Hand Side".
 //
-// llgo:link (*IndexInfo).VtabRhsValue C.sqlite3_vtab_rhs_value
+//llgo:link (*IndexInfo).VtabRhsValue C.sqlite3_vtab_rhs_value
 func (self *IndexInfo) VtabRhsValue(_llcppg_param2 c.Int, ppVal **Value) c.Int {
 	return 0
 }
@@ -10345,12 +10344,12 @@ func (self *IndexInfo) VtabRhsValue(_llcppg_param2 c.Int, ppVal **Value) c.Int {
 //
 // * See also: [sqlite3_stmt_scanstatus_reset()]
 //
-// llgo:link (*Stmt).Scanstatus C.sqlite3_stmt_scanstatus
+//llgo:link (*Stmt).Scanstatus C.sqlite3_stmt_scanstatus
 func (self *Stmt) Scanstatus(idx c.Int, iScanStatusOp c.Int, pOut unsafe.Pointer) c.Int {
 	return 0
 }
 
-// llgo:link (*Stmt).ScanstatusV2 C.sqlite3_stmt_scanstatus_v2
+//llgo:link (*Stmt).ScanstatusV2 C.sqlite3_stmt_scanstatus_v2
 func (self *Stmt) ScanstatusV2(idx c.Int, iScanStatusOp c.Int, flags c.Int, pOut unsafe.Pointer) c.Int {
 	return 0
 }
@@ -10363,7 +10362,7 @@ func (self *Stmt) ScanstatusV2(idx c.Int, iScanStatusOp c.Int, flags c.Int, pOut
 // * This API is only available if the library is built with pre-processor
 // * symbol [SQLITE_ENABLE_STMT_SCANSTATUS] defined.
 //
-// llgo:link (*Stmt).ScanstatusReset C.sqlite3_stmt_scanstatus_reset
+//llgo:link (*Stmt).ScanstatusReset C.sqlite3_stmt_scanstatus_reset
 func (self *Stmt) ScanstatusReset() {
 }
 
@@ -10397,7 +10396,7 @@ func (self *Stmt) ScanstatusReset() {
 // * ^This function does not set the database handle error code or message
 // * returned by the [sqlite3_errcode()] and [sqlite3_errmsg()] functions.
 //
-// llgo:link (*Sqlite3).DbCacheflush C.sqlite3_db_cacheflush
+//llgo:link (*Sqlite3).DbCacheflush C.sqlite3_db_cacheflush
 func (self *Sqlite3) DbCacheflush() c.Int {
 	return 0
 }
@@ -10412,7 +10411,7 @@ func (self *Sqlite3) DbCacheflush() c.Int {
 // * called to get back the underlying "errno" that caused the problem, such
 // * as ENOSPC, EAUTH, EISDIR, and so forth.
 //
-// llgo:link (*Sqlite3).SystemErrno C.sqlite3_system_errno
+//llgo:link (*Sqlite3).SystemErrno C.sqlite3_system_errno
 func (self *Sqlite3) SystemErrno() c.Int {
 	return 0
 }
@@ -10464,7 +10463,7 @@ func (self *Sqlite3) SystemErrno() c.Int {
 // * [sqlite3_snapshot_get()] must be freed using [sqlite3_snapshot_free()]
 // * to avoid a memory leak.
 //
-// llgo:link (*Sqlite3).SnapshotGet C.sqlite3_snapshot_get
+//llgo:link (*Sqlite3).SnapshotGet C.sqlite3_snapshot_get
 func (self *Sqlite3) SnapshotGet(zSchema *c.Char, ppSnapshot **Snapshot) c.Int {
 	return 0
 }
@@ -10508,7 +10507,7 @@ func (self *Sqlite3) SnapshotGet(zSchema *c.Char, ppSnapshot **Snapshot) c.Int {
 // * (Hint: Run "[PRAGMA application_id]" against a newly opened
 // * database connection in order to make it ready to use snapshots.)
 //
-// llgo:link (*Sqlite3).SnapshotOpen C.sqlite3_snapshot_open
+//llgo:link (*Sqlite3).SnapshotOpen C.sqlite3_snapshot_open
 func (self *Sqlite3) SnapshotOpen(zSchema *c.Char, pSnapshot *Snapshot) c.Int {
 	return 0
 }
@@ -10520,7 +10519,7 @@ func (self *Sqlite3) SnapshotOpen(zSchema *c.Char, pSnapshot *Snapshot) c.Int {
 // * The application must eventually free every [sqlite3_snapshot] object
 // * using this routine to avoid a memory leak.
 //
-// llgo:link (*Snapshot).Free C.sqlite3_snapshot_free
+//llgo:link (*Snapshot).Free C.sqlite3_snapshot_free
 func (self *Snapshot) Free() {
 }
 
@@ -10567,7 +10566,7 @@ func SnapshotCmp(p1 *Snapshot, p2 *Snapshot) c.Int
 //
 // * SQLITE_OK is returned if successful, or an SQLite error code otherwise.
 //
-// llgo:link (*Sqlite3).SnapshotRecover C.sqlite3_snapshot_recover
+//llgo:link (*Sqlite3).SnapshotRecover C.sqlite3_snapshot_recover
 func (self *Sqlite3) SnapshotRecover(zDb *c.Char) c.Int {
 	return 0
 }
@@ -10615,7 +10614,7 @@ func (self *Sqlite3) SnapshotRecover(zDb *c.Char) c.Int {
 // * This interface is omitted if SQLite is compiled with the
 // * [SQLITE_OMIT_DESERIALIZE] option.
 //
-// llgo:link (*Sqlite3).Serialize C.sqlite3_serialize
+//llgo:link (*Sqlite3).Serialize C.sqlite3_serialize
 func (self *Sqlite3) Serialize(zSchema *c.Char, piSize *Int64, mFlags c.Uint) *uint8 {
 	return nil
 }
@@ -10662,7 +10661,7 @@ func (self *Sqlite3) Serialize(zSchema *c.Char, piSize *Int64, mFlags c.Uint) *u
 // * This interface is omitted if SQLite is compiled with the
 // * [SQLITE_OMIT_DESERIALIZE] option.
 //
-// llgo:link (*Sqlite3).Deserialize C.sqlite3_deserialize
+//llgo:link (*Sqlite3).Deserialize C.sqlite3_deserialize
 func (self *Sqlite3) Deserialize(zSchema *c.Char, pData *uint8, szDb Int64, szBuf Int64, mFlags c.Uint) c.Int {
 	return 0
 }
@@ -10672,7 +10671,7 @@ func (self *Sqlite3) Deserialize(zSchema *c.Char, pData *uint8, szDb Int64, szBu
 //
 // *   SELECT ... FROM <rtree> WHERE <rtree col> MATCH $zGeom(... params ...)
 //
-// llgo:link (*Sqlite3).RtreeGeometryCallback C.sqlite3_rtree_geometry_callback
+//llgo:link (*Sqlite3).RtreeGeometryCallback C.sqlite3_rtree_geometry_callback
 func (self *Sqlite3) RtreeGeometryCallback(zGeom *c.Char, xGeom func(_llcppg_param1 *RtreeGeometry, _llcppg_param2 c.Int, _llcppg_param3 *RtreeDbl, _llcppg_param4 *c.Int) c.Int, pContext unsafe.Pointer) c.Int {
 	return 0
 }
@@ -10682,7 +10681,7 @@ func (self *Sqlite3) RtreeGeometryCallback(zGeom *c.Char, xGeom func(_llcppg_par
 //
 // *   SELECT ... FROM <rtree> WHERE <rtree col> MATCH $zQueryFunc(... params ...)
 //
-// llgo:link (*Sqlite3).RtreeQueryCallback C.sqlite3_rtree_query_callback
+//llgo:link (*Sqlite3).RtreeQueryCallback C.sqlite3_rtree_query_callback
 func (self *Sqlite3) RtreeQueryCallback(zQueryFunc *c.Char, xQueryFunc func(_llcppg_param1 *RtreeQueryInfo) c.Int, pContext unsafe.Pointer, xDestructor func(_llcppg_param1 unsafe.Pointer)) c.Int {
 	return 0
 }
