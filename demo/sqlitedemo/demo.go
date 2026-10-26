@@ -11,38 +11,39 @@ func main() {
 
 	db, err := sqlite.Open(c.Str("test.db"))
 	check(err, db, "sqlite: Open")
+	defer db.Close()
 
 	err = db.Exec(c.Str("CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT)"), nil, nil, nil)
 	check(err, db, "sqlite: Exec CREATE TABLE")
 
-	stmt, err := db.PrepareV3("INSERT INTO users (id, name) VALUES (?, ?)", 0, nil)
-	check(err, db, "sqlite: PrepareV3 INSERT")
+	{
+		stmt, err := db.PrepareV3("INSERT INTO users (id, name) VALUES (?, ?)", 0, nil)
+		check(err, db, "sqlite: PrepareV3 INSERT")
+		defer stmt.Finalize()
 
-	stmt.BindInt(1, 100)
-	stmt.BindText(2, c.Str("Hello World"), -1, nil)
+		stmt.BindInt(1, 100)
+		stmt.BindText(2, c.Str("Hello World"), -1, nil)
 
-	err = stmt.Step()
-	checkDone(err, db, "sqlite: Step INSERT 1")
+		err = stmt.Step()
+		checkDone(err, db, "sqlite: Step INSERT 1")
 
-	stmt.Reset()
-	stmt.BindInt(1, 200)
-	stmt.BindText(2, c.Str("This is llgo"), -1, nil)
+		stmt.Reset()
+		stmt.BindInt(1, 200)
+		stmt.BindText(2, c.Str("This is llgo"), -1, nil)
 
-	err = stmt.Step()
-	checkDone(err, db, "sqlite: Step INSERT 2")
-
-	stmt.Finalize()
-
-	stmt, err = db.PrepareV3("SELECT * FROM users", 0, nil)
-	check(err, db, "sqlite: PrepareV3 SELECT")
-
-	for stmt.Step() == sqlite.ROW {
-		c.Printf(c.Str("==> id=%d, name=%s\n"), stmt.ColumnInt(0), stmt.ColumnText(1))
+		err = stmt.Step()
+		checkDone(err, db, "sqlite: Step INSERT 2")
 	}
-	checkDone(db.Errcode(), db, "sqlite: Step done")
+	{
+		stmt, err := db.PrepareV3("SELECT * FROM users", 0, nil)
+		check(err, db, "sqlite: PrepareV3 SELECT")
+		defer stmt.Finalize()
 
-	stmt.Finalize()
-	db.Close()
+		for stmt.Step() == sqlite.ROW {
+			c.Printf(c.Str("==> id=%d, name=%s\n"), stmt.ColumnInt(0), stmt.ColumnText(1))
+		}
+		checkDone(db.Errcode(), db, "sqlite: Step done")
+	}
 }
 
 func check(err c.Int, db *sqlite.Sqlite3, at string) {
