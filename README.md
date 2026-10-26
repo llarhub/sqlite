@@ -40,25 +40,59 @@ package main
 
 import (
 	"github.com/goplus/lib/c"
+	"github.com/goplus/lib/c/os"
 	"github.com/llarhub/sqlite"
 )
 
 func main() {
-	var db *sqlite.Sqlite3
-	if sqlite.Open(c.Str(":memory:"), &db) != sqlite.OK {
-		panic("could not open database")
-	}
-	defer db.Close()
+	os.Remove(c.Str("test.db"))
 
-	var stmt *sqlite.Stmt
-	if db.PrepareV2(c.Str("SELECT ?1 + 1"), -1, &stmt, nil) != sqlite.OK {
-		panic(c.GoString(db.Errmsg()))
-	}
-	defer stmt.Finalize()
+	db, err := sqlite.Open(c.Str("test.db"))
+	check(err, db, "sqlite: Open")
 
-	stmt.BindInt(1, 41)
-	if stmt.Step() == sqlite.ROW {
-		println(stmt.ColumnInt(0)) // 42
+	err = db.Exec(c.Str("CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT)"), nil, nil, nil)
+	check(err, db, "sqlite: Exec CREATE TABLE")
+
+	stmt, err := db.PrepareV3("INSERT INTO users (id, name) VALUES (?, ?)", 0, nil)
+	check(err, db, "sqlite: PrepareV3 INSERT")
+
+	stmt.BindInt(1, 100)
+	stmt.BindText(2, c.Str("Hello World"), -1, nil)
+
+	err = stmt.Step()
+	checkDone(err, db, "sqlite: Step INSERT 1")
+
+	stmt.Reset()
+	stmt.BindInt(1, 200)
+	stmt.BindText(2, c.Str("This is llgo"), -1, nil)
+
+	err = stmt.Step()
+	checkDone(err, db, "sqlite: Step INSERT 2")
+
+	stmt.Finalize()
+
+	stmt, err = db.PrepareV3("SELECT * FROM users", 0, nil)
+	check(err, db, "sqlite: PrepareV3 SELECT")
+
+	for stmt.Step() == sqlite.ROW {
+		c.Printf(c.Str("==> id=%d, name=%s\n"), stmt.ColumnInt(0), stmt.ColumnText(1))
+	}
+	checkDone(db.Errcode(), db, "sqlite: Step done")
+
+	stmt.Finalize()
+	db.Close()
+}
+
+func check(err c.Int, db *sqlite.Sqlite3, at string) {
+	if err != sqlite.OK {
+		c.Printf(c.Str("==> %s Error: (%d) %s\n"), c.AllocaCStr(at), err, db.Errmsg())
+		c.Exit(1)
+	}
+}
+
+func checkDone(err c.Int, db *sqlite.Sqlite3, at string) {
+	if err != sqlite.DONE {
+		check(err, db, at)
 	}
 }
 ```

@@ -41,5 +41,5 @@ T sqlite3_value Value
 T sqlite3_vfs Vfs
 T sqlite3_vtab Vtab
 T sqlite3_vtab_cursor VtabCursor
-T sqlite_int64 SqliteInt64
-T sqlite_uint64 SqliteUint64
+T sqlite_int64 Int64
+T sqlite_uint64 Uint64

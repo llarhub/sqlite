@@ -3685,10 +3685,8 @@ type Str struct {
 }
 type Value struct {
 }
-type SqliteInt64 = c.LongLong
-type SqliteUint64 = c.UlongLong
-type Int64 = SqliteInt64
-type Uint64 = SqliteUint64
+type Int64 = c.LongLong
+type Uint64 = c.UlongLong
 
 // * The type for a callback function.
 // * This is legacy and deprecated.  It is included for historical
@@ -3785,8 +3783,8 @@ type Fts5ExtensionFunction = func(_llcppg_param1 *Fts5ExtensionApi, _llcppg_para
 //
 // * See also: [sqlite_version()] and [sqlite_source_id()].
 //
-//go:linkname Sqlite3Version C.sqlite3_version
-var Sqlite3Version *c.Char
+//go:linkname Version C.sqlite3_version
+var Version *c.Char
 
 //go:linkname Libversion C.sqlite3_libversion
 func Libversion() *c.Char
@@ -7954,8 +7952,8 @@ func Sleep(_llcppg_param1 c.Int) c.Int
 // * sqlite3_temp_directory = sqlite3_mprintf("%s", zPathBuf);
 // * </pre></blockquote>
 //
-//go:linkname Sqlite3TempDirectory C.sqlite3_temp_directory
-var Sqlite3TempDirectory *c.Char
+//go:linkname TempDirectory C.sqlite3_temp_directory
+var TempDirectory *c.Char
 
 // * CAPI3REF: Name Of The Folder Holding Database Files
 //
@@ -7991,8 +7989,8 @@ var Sqlite3TempDirectory *c.Char
 // * made NULL or made to point to memory obtained from [sqlite3_malloc]
 // * or else the use of the [data_store_directory pragma] should be avoided.
 //
-//go:linkname Sqlite3DataDirectory C.sqlite3_data_directory
-var Sqlite3DataDirectory *c.Char
+//go:linkname DataDirectory C.sqlite3_data_directory
+var DataDirectory *c.Char
 
 // * CAPI3REF: Test For Auto-Commit Mode
 // * KEYWORDS: {autocommit mode}

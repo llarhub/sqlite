@@ -36,13 +36,10 @@ func main() {
 	stmt, err = db.PrepareV3("SELECT * FROM users", 0, nil)
 	check(err, db, "sqlite: PrepareV3 SELECT")
 
-	for {
-		if err = stmt.Step(); err != sqlite.ROW {
-			break
-		}
+	for stmt.Step() == sqlite.ROW {
 		c.Printf(c.Str("==> id=%d, name=%s\n"), stmt.ColumnInt(0), stmt.ColumnText(1))
 	}
-	checkDone(err, db, "sqlite: Step done")
+	checkDone(db.Errcode(), db, "sqlite: Step done")
 
 	stmt.Finalize()
 	db.Close()
